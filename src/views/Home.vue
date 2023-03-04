@@ -6,8 +6,17 @@
       <div class="test">这里是用于测试postcss的文字 px2rem 216 rem2px 54</div>
       <div class="flex">这是用来测试flex的</div>
     </div>
-    <!-- <sijiMap /> -->
-    <!-- <chartview></chartview> -->
+    <!-- <sijiMap />
+    <chartview></chartview>
+    <HelloWorld v-if="num.includes(6)" />
+    <DeepCopy></DeepCopy>
+    <VtkState></VtkState>
+    <PropsCom :status="status" @changeValue="changeValue"></PropsCom>
+    <Label></Label>
+    <componentInput></componentInput>
+    <descriptions></descriptions>
+    <searchBar></searchBar>
+    <AmapProject></AmapProject> -->
   </div>
 </template>
 
@@ -16,12 +25,41 @@
 import leftTree from "@/views/leftTree.vue";
 import sijiMap from "@/views/map.vue";
 import chartview from "@/views/chartTest/index.vue";
+import HelloWorld from "@/components/HelloWorld.vue";
+import DeepCopy from "@/components/DeepCopy.vue";
+import VtkState from "@/components/VtkState.vue";
+import PropsCom from "@/components/PropsCom.vue";
+import Label from "@/components/Label.vue";
+import componentInput from "@/components/componentInput.vue";
+import descriptions from "@/components/descriptions.vue";
+import searchBar from "@/components/searchBar.vue";
+import AmapProject from "@/components/AmapProject.vue";
 export default {
   name: "home",
   components: {
     leftTree,
     sijiMap,
     chartview,
+    HelloWorld,
+    componentInput,
+    descriptions,
+    DeepCopy,
+    VtkState,
+    PropsCom,
+    Label,
+    searchBar,
+    AmapProject,
+  },
+  data() {
+    return {
+      status: {
+        one: 1,
+        two: 2,
+      },
+      // status:12 //传基础类型会报错,复杂类型如对象不会报错
+      fatherValue: null,
+      num: [1, 2, 3, 4, 5],
+    };
   },
   methods: {
     eventOpen() {
@@ -29,6 +67,16 @@ export default {
         window.document.documentElement.getBoundingClientRect().width
       );
       this.$refs.leftTree.open();
+    },
+    changeValue(childvalue) {
+      this.fatherValue = childvalue;
+    },
+  },
+  watch: {
+    fatherValue: {
+      handler(newval, oldval) {
+        console.log(newval);
+      },
     },
   },
 };

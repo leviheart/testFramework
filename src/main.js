@@ -11,6 +11,7 @@ import { Button, Select, Dialog, Input, Form, FormItem } from "element-ui";
 import eChartFn from "@/components/chart/index.js";
 import ChartPanel from "@/components/chart/index.vue";
 import "lib-flexible"; // 移动端适配 (目录: hello-world/src/main.js)
+import VueAMap from "vue-amap";
 console.log(ChartPanel);
 Vue.component(ChartPanel.name, ChartPanel);
 Vue.prototype.$eChartFn = eChartFn;
@@ -26,6 +27,22 @@ Vue.use(svgWheel);
 Vue.use(svgDrag);
 Vue.config.productionTip = false;
 
+//注册高德
+Vue.use(VueAMap);
+VueAMap.initAMapApiLoader({
+  key: "eb5690f2fed881fb7927cd3de8525c9c", //这里是你的高德开发者key
+  plugin: [
+    "AMap.Autocomplete",
+    "AMap.PlaceSearch",
+    "AMap.Scale",
+    "AMap.OverView",
+    "AMap.ToolBar",
+    "AMap.MapType",
+    "AMap.PolyEditor",
+    "AMap.CircleEditor",
+  ],
+  v: "1.4.4",
+});
 new Vue({
   router,
   store,

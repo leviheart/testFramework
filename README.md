@@ -4,6 +4,7 @@
 2.9 测试 postcss-plugin-px2rem 插件
 2.22 cesium mapbox 封装
 2.24 级联组件 权限 Vuex Vue-router ssr
+3.3 地图添加雷达波纹
 
 ## Project setup
 
