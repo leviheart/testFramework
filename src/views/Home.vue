@@ -6,6 +6,14 @@
       <div class="test">这里是用于测试postcss的文字 px2rem 216 rem2px 54</div>
       <div class="flex">这是用来测试flex的</div>
     </div>
+
+    <div class="box">
+      <el-scrollbar>
+        <p v-for="item in 55" :key="item">
+          欢迎使用欢迎欢迎欢迎使用欢迎欢迎欢迎使用欢迎欢迎el-scrollbar1111111111111111111111111111111111111
+        </p>
+      </el-scrollbar>
+    </div>
     <!-- <sijiMap />
     <chartview></chartview>
     <HelloWorld v-if="num.includes(6)" />
@@ -98,5 +106,30 @@ export default {
 .flex {
   font-size: 16px;
   flex: 1;
+}
+
+.box {
+  width: 100px;
+  height: 300px;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+}
+
+.el-scrollbar {
+  height: calc(100% + 17px);
+  flex: 1;
+  overflow: hidden;
+}
+
+.el-scrollbar__view .content {
+  width: max-content;
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.el-scrollbar__view .content p {
+  white-space: nowrap;
 }
 </style>
