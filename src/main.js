@@ -15,6 +15,8 @@ import {
   Form,
   FormItem,
   Scrollbar,
+  Tag,
+  Option,
 } from "element-ui";
 import eChartFn from "@/components/chart/index.js";
 import ChartPanel from "@/components/chart/index.vue";
@@ -31,6 +33,9 @@ Vue.use(Input);
 Vue.use(Form);
 Vue.use(FormItem);
 Vue.use(Scrollbar);
+Vue.use(Tag);
+Vue.use(Option);
+
 
 Vue.use(svgWheel);
 Vue.use(svgDrag);
