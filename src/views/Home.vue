@@ -9,9 +9,11 @@
 
     <div class="box">
       <el-scrollbar>
-        <p v-for="item in 55" :key="item">
-          欢迎使用欢迎欢迎欢迎使用欢迎欢迎欢迎使用欢迎欢迎el-scrollbar1111111111111111111111111111111111111
-        </p>
+        <el-tree
+          :data="data"
+          :props="defaultProps"
+          @node-click="handleNodeClick"
+        ></el-tree>
       </el-scrollbar>
     </div>
     <!-- <sijiMap />
@@ -67,6 +69,67 @@ export default {
       // status:12 //传基础类型会报错,复杂类型如对象不会报错
       fatherValue: null,
       num: [1, 2, 3, 4, 5],
+      data: [
+        {
+          label: "一级 1",
+          children: [
+            {
+              label: "二级 1-1",
+              children: [
+                {
+                  label: "三级 1-1-1",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          label: "一级 2",
+          children: [
+            {
+              label: "二级 2-1",
+              children: [
+                {
+                  label: "三级 2-1-1",
+                },
+              ],
+            },
+            {
+              label: "二级 2-2",
+              children: [
+                {
+                  label: "三级 2-2-1",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          label: "一级 3",
+          children: [
+            {
+              label: "二级 3-1",
+              children: [
+                {
+                  label: "三级 3-1-1",
+                },
+              ],
+            },
+            {
+              label: "二级 3-2",
+              children: [
+                {
+                  label: "三级 3-2-1",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      defaultProps: {
+        children: "children",
+        label: "label",
+      },
     };
   },
   methods: {
@@ -78,6 +141,9 @@ export default {
     },
     changeValue(childvalue) {
       this.fatherValue = childvalue;
+    },
+    handleNodeClick(data) {
+      console.log(data);
     },
   },
   watch: {
@@ -109,27 +175,13 @@ export default {
 }
 
 .box {
-  width: 100px;
-  height: 300px;
+  width: 300px;
+  height: 600px;
   position: relative;
-  display: flex;
   overflow: hidden;
 }
 
 .el-scrollbar {
   height: calc(100% + 17px);
-  flex: 1;
-  overflow: hidden;
-}
-
-.el-scrollbar__view .content {
-  width: max-content;
-  height: 100%;
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-.el-scrollbar__view .content p {
-  white-space: nowrap;
 }
 </style>
