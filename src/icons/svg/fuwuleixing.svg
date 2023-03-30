@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16.148" height="18.647" viewBox="0 0 16.148 18.647">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke: #fff;
+        stroke-width: 0.4px;
+      }
+    </style>
+  </defs>
+  <g id="fuwuleixing" transform="translate(-75.064 -7.449)">
+    <path id="路径_15" data-name="路径 15" class="cls-1" d="M83.138,7.68l-7.874,4.546v9.093l7.874,4.546,7.874-4.546V12.226Zm6.766,13-6.766,3.907-6.766-3.907V12.866l6.766-3.907L89.9,12.866Z" transform="translate(0 0)"/>
+    <path id="路径_16" data-name="路径 16" class="cls-1" d="M288.4,336.9l-.554.96,3.488,2.013v3.784h1.108v-3.784l3.487-2.013-.554-.96-3.488,2.014Z" transform="translate(-208.75 -323.28)"/>
+  </g>
+</svg>
