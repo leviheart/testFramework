@@ -188,7 +188,7 @@ export default {
         }
       }
 
-      console.log(dates);
+      // console.log(dates);
       this.xAxisData = dates;
       this.$nextTick(() => {
         this.drawChart();
@@ -203,6 +203,7 @@ export default {
       this.dialogVisible = false;
     },
     drawChart() {
+      console.log(`${window.location.origin}${window.location.pathname}`)
       myChart = this.$echarts.init(document.getElementById("chart"));
       const option = this.createOption();
       myChart.setOption(option);
@@ -222,7 +223,7 @@ export default {
           //   },
           // },
           formatter: function(params) {
-            console.log(params);
+            // console.log(params);
             var ydata = params[0].value;
             var date = params[0].axisValue;
             return "当前时间:" + date + "<br />" + "量测值:" + ydata;
@@ -243,7 +244,7 @@ export default {
           axisLabel: {
             interval: 95,
             formatter: function(value) {
-              console.log(value);
+              // console.log(value);
               const monthDay = value ? value.substring(5, 10) : "";
               return monthDay;
             },
@@ -264,6 +265,20 @@ export default {
           {
             type: "line",
             data: that.yAxisData,
+            markPoint: {
+              data: [
+                {
+                  type: "min",
+                  name: "最低点",
+                  symbol: "image://" + require('@/icons/svg/预警@3x.png'),
+                },
+                {
+                  type: "max",
+                  name: "最高点",
+                  symbol: "image://" + "预警.svg",
+                },
+              ],
+            },
           },
         ],
       };
