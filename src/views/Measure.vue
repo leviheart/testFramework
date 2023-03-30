@@ -203,7 +203,7 @@ export default {
       this.dialogVisible = false;
     },
     drawChart() {
-      console.log(`${window.location.origin}${window.location.pathname}`)
+      console.log(`${window.location.origin}${window.location.pathname}`);
       myChart = this.$echarts.init(document.getElementById("chart"));
       const option = this.createOption();
       myChart.setOption(option);
@@ -270,7 +270,7 @@ export default {
                 {
                   type: "min",
                   name: "最低点",
-                  symbol: "image://" + require('@/icons/svg/预警@3x.png'),
+                  symbol: "image://" + require("@/icons/svg/预警@3x.png"),
                 },
                 {
                   type: "max",
