@@ -80,15 +80,15 @@ module.exports = {
     https: false, // 编译失败时刷新页面
     hot: true, // 开启热加载
     hotOnly: false,
-    // proxy: {
-    //   "/devApi": {
-    //     target: "", //API服务器的地址
-    //     changeOrigin: true,
-    //     pathRewrite: {
-    //       "^/devApi": ''
-    //     }
-    //   }
-    // },
+    proxy: {
+      [process.env.VUE_APP_API]: {
+          target: process.env.VUE_API_DEV_TARGET, //API服务器的地址
+          changeOrigin: true,
+          pathRewrite: {
+              [`^${process.env.VUE_APP_API}`]: ''
+          }
+      }
+    },
     overlay: {
       // 全屏模式下是否显示脚本错误
       warnings: true,

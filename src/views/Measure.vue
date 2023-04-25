@@ -54,9 +54,9 @@
               :value="item"
             >
               <div class="options">
-                <div v-if="item === 'A相电流'" class="line-red"></div>
-                <div v-else-if="item === 'B相电流'" class="line-green"></div>
-                <div v-else-if="item === 'C相电流'" class="line-yellow"></div>
+                <div v-if="item === 'A'" class="line-red"></div>
+                <div v-else-if="item === 'B'" class="line-green"></div>
+                <div v-else-if="item === 'C'" class="line-yellow"></div>
                 {{ item }}
               </div>
             </el-option>
@@ -79,8 +79,8 @@ export default {
       fullscreen: false,
       dialogWidth: "100%",
       selectedOption: "day",
-      mulOption: ["A相电流", "B相电流", "C相电流"],
-      muloptions: ["A相电流", "B相电流", "C相电流"],
+      mulOption: ["A", "B", "C"],
+      muloptions: ["A", "B", "C"],
       xAxisData: [],
       yAxisData: [
         2,
@@ -104,20 +104,8 @@ export default {
         56,
         45,
         4,
-        45,
-        6,
-        54,
-        6,
-        45,
-        6,
-        3,
-        7,
-        3,
-        5,
-        3,
-        32,
-        2,
-        3,
+        "",
+        "","","","","","","","","","","","",
         21,
         34,
         5,
@@ -125,12 +113,7 @@ export default {
         3,
         4,
         3,
-        34,
-        45,
-        5,
-        46,
-        4,
-        56,
+        "",
         45,
         4,
         45,
@@ -214,6 +197,20 @@ export default {
         // tooltip: {
         //   trigger: "axis",
         // },
+        dataZoom: {
+        type: 'inside',
+        start: 0,
+        end: 100,
+      },
+        // toolbox: {
+        //   feature: {
+        //     dataZoom: {
+        //       yAxisIndex: "none",
+        //       type: "slider", // 添加type属性
+        //     },
+        //     restore: {},
+        //   },
+        // },
         tooltip: {
           trigger: "axis",
           // axisPointer: {
@@ -226,7 +223,7 @@ export default {
             // console.log(params);
             var ydata = params[0].value;
             var date = params[0].axisValue;
-            return "当前时间:" + date + "<br />" + "量测值:" + ydata;
+            return ":" + date + "<br />" + ":" + ydata;
           },
         },
         xAxis: {
@@ -244,11 +241,13 @@ export default {
           axisLabel: {
             interval: 95,
             formatter: function(value) {
-              // console.log(value);
+              console.log(value);
               const monthDay = value ? value.substring(5, 10) : "";
               return monthDay;
             },
           },
+          // min: "2023-03-26 00:00:00",
+          // max: "2023-04-01 00:00:00",
         },
         yAxis: {
           type: "value",
@@ -260,6 +259,8 @@ export default {
           //     width: 2,
           //   },
           // },
+          // min: 0,
+          // max: 99,
         },
         series: [
           {

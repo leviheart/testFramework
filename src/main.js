@@ -25,6 +25,7 @@ import "lib-flexible"; // 移动端适配 (目录: hello-world/src/main.js)
 import VueAMap from "vue-amap";
 import ElementUI from 'element-ui';
 import * as echarts from 'echarts'
+// import GlobalRouteHooks from './plugins/global-route-hooks';
 Vue.prototype.$echarts = echarts
 
 console.log(ChartPanel);
@@ -32,6 +33,9 @@ Vue.component(ChartPanel.name, ChartPanel);
 Vue.prototype.$eChartFn = eChartFn;
 
 Vue.use(ElementUI);
+// Vue.use(GlobalRouteHooks, {
+//   pagesToOperate: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6'],
+// });
 
 
 // Vue.use(Button);
