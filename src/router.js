@@ -1,7 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
-import Measure from "./views/Measure.vue";
+import Home from "./views/leftTree.vue";
 
 Vue.use(Router);
 
@@ -10,7 +9,7 @@ export default new Router({
     {
       path: "/",
       name: "home",
-      component: Measure
+      component: Home
     },
     {
       path: '/maps/page1',

@@ -20,15 +20,22 @@ export default {
     };
   },
   mounted() {
-    const searchParams = new URLSearchParams(window.location.hash.split('?')[1]);
-const psrId = searchParams.get('psrId');
-const psrType = searchParams.get('psrType');
-console.log(window.location.hash.split('?')[1],searchParams,psrId, psrType);
+    // const searchParams = new URLSearchParams(
+    //   window.location.hash.split("?")[1]
+    // );
+    // const psrId = searchParams.get("psrId");
+    // const psrType = searchParams.get("psrType");
+    // console.log(
+    //   window.location.hash.split("?")[1],
+    //   searchParams,
+    //   psrId,
+    //   psrType
+    // );
   },
   methods: {
     async handleGet() {
       try {
-        const response = await axios.get(this.url, { params: this.getParams });
+        const response = await axios.get(this.url, JSON.parse(JSON.stringify(this.getParams)));
         this.response = response.data;
       } catch (error) {
         console.error(error);
@@ -36,7 +43,10 @@ console.log(window.location.hash.split('?')[1],searchParams,psrId, psrType);
     },
     async handlePost() {
       try {
-        const response = await axios.post(this.url, this.postParams);
+        const response = await axios.post(
+          this.url,
+          JSON.parse(JSON.stringify(this.postParams))
+        );
         this.response = response.data;
       } catch (error) {
         console.error(error);
