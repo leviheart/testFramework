@@ -6,23 +6,10 @@
     <svg-icon className="svg-icon-18" iconClass="phone"></svg-icon> -->
     <!-- ymx问题测试 -->
     <div style="display: inline-block">
-      <el-dialog
-        :visible.sync="dialog"
-        :close-on-click-modal="false"
-        :before-close="cancel"
-        :title="title"
-        append-to-body
-        width="475px"
-        @close="cancel"
-      >
+      <el-dialog :visible.sync="dialog" :close-on-click-modal="false" :before-close="cancel" :title="title" append-to-body
+        width="475px" @close="cancel">
         <div v-for="(item, index) in detail" :key="item.id">
-          <el-form
-            :ref="'form' + index"
-            :model="form"
-            :rules="rules"
-            size="small"
-            label-width="88px"
-          >
+          <el-form :ref="'form' + index" :model="form" :rules="rules" size="small" label-width="88px">
             <el-form-item label="新邮箱" prop="email" :key="item.it1">
               <el-input v-model="form.email" />
             </el-form-item>
@@ -30,16 +17,25 @@
               <el-input v-model="form.code" style="width: 320px" />
             </el-form-item>
             <el-form-item label="当前密码" prop="pass" :key="item.it3">
-              <el-input
-                v-model="form.pass"
-                type="password"
-                style="width: 320px"
-              />
+              <el-input v-model="form.pass" type="password" style="width: 320px" />
             </el-form-item>
           </el-form>
         </div>
       </el-dialog>
     </div>
+    <el-table :data="tableData.slice((currentPage - 1) * pageSize, currentPage * pageSize)" style="width: 100%">
+      <el-table-column prop="date" label="日期" width="180"> </el-table-column>
+      <el-table-column prop="name" label="姓名" width="180"> </el-table-column>
+      <el-table-column prop="address" label="地址"> </el-table-column>
+    </el-table>
+    <!-- 分页器 -->
+    <div class="block" style="margin-top: 15px">
+      <el-pagination align="center" @size-change="handleSizeChange" @current-change="handleCurrentChange"
+        :current-page="currentPage" :page-sizes="[1, 5, 10, 20]" :page-size="pageSize"
+        layout="total, sizes, prev, pager, next, jumper" :total="tableData.length">
+      </el-pagination>
+    </div>
+    <div>测试变量 这种方式是可以的，只有添加新元素和新属性时需要$set{{ params.pageNum }}</div>
   </div>
 </template>
 
@@ -86,6 +82,59 @@ export default {
         { id: 1, it1: "it1", it2: "it2", it3: "it3" },
         { id: 2, it1: "it11", it2: "it22", it3: "it33" },
       ],
+      tableData: [
+        {
+          date: "2016-05-02",
+          name: "第一页",
+          address: "上海市普陀区金沙江路 1518 弄",
+        },
+        {
+          date: "2016-05-04",
+          name: "第二页",
+          address: "上海市普陀区金沙江路 1517 弄",
+        },
+        {
+          date: "2016-05-01",
+          name: "第三页",
+          address: "上海市普陀区金沙江路 1519 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "第四页",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-01",
+          name: "第五页",
+          address: "上海市普陀区金沙江路 1519 弄",
+        },
+        {
+          date: "2016-05-03",
+          name: "第六页",
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
+        {
+          date: "2016-05-02",
+          name: "第一页",
+          address: "上海市普陀区金沙江路 1518 弄",
+        },
+        {
+          date: "2016-05-04",
+          name: "第二页",
+          address: "上海市普陀区金沙江路 1517 弄",
+        },
+        {
+          date: "2016-05-01",
+          name: "第三页",
+          address: "上海市普陀区金沙江路 1519 弄",
+        }
+      ],
+      currentPage: 1, // 当前页码
+      total: 20, // 总条数
+      pageSize: 2, // 每页的数据条数
+      params: {
+        pageNum: 1,
+      }
     };
   },
   mounted() {
@@ -178,6 +227,19 @@ export default {
       await timer3(text);
       console.log("timer3执行完成");
     },
+    //每页条数改变时触发 选择一页显示多少行
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`);
+      this.currentPage = 1;
+      this.pageSize = val;
+    },
+    //当前页改变时触发 跳转其他页
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
+      this.currentPage = val;
+      this.params.pageNum = val;
+      console.log("测试变量", this.params.pageNum)
+    }
   },
 };
 </script>
