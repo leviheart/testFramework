@@ -25,7 +25,6 @@ import eChartFn from "@/components/chart/index.js";
 import ChartPanel from "@/components/chart/index.vue";
 import "lib-flexible"; // 移动端适配 (目录: hello-world/src/main.js)
 import VueAMap from "vue-amap";
-import ElementUI from "element-ui";
 import * as echarts from "echarts";
 // import GlobalRouteHooks from './plugins/global-route-hooks';
 Vue.prototype.$echarts = echarts;

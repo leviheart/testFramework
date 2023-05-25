@@ -238,7 +238,8 @@ export default {
       console.log(`当前页: ${val}`);
       this.currentPage = val;
       this.params.pageNum = val;
-      console.log("测试变量", this.params.pageNum)
+      this.$set(this.params, 'pageNum', 2)
+      console.log("测试变量", this.params.pageNum, this.params)
     }
   },
 };
