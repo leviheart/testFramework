@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke: #e3e8f4;
+        stroke-width: 6px;
+      }
+
+      .cls-2 {
+        fill: #e3e8f4;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+
+      .cls-4 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="用户头像" transform="translate(-864 -453)">
+    <g id="椭圆_22" data-name="椭圆 22" class="cls-1" transform="translate(864 453)">
+      <circle class="cls-3" cx="40" cy="40" r="40"/>
+      <circle class="cls-4" cx="40" cy="40" r="37"/>
+    </g>
+    <g id="wodexinle-" transform="translate(873 455.512)">
+      <path id="路径_13" data-name="路径 13" class="cls-2" d="M248.087,14.316m-14.316,0A14.316,14.316,0,1,0,248.087,0,14.316,14.316,0,0,0,233.771,14.316Z" transform="translate(-217.087 14.513)"/>
+      <path id="路径_14" data-name="路径 14" class="cls-2" d="M55.6,603.631c-13.673,0-24.758,7.643-24.758,17.072,0,2.518,11.084,11.466,24.758,11.466S80.362,623.22,80.362,620.7C80.362,611.274,69.277,603.631,55.6,603.631Z" transform="translate(-24.604 -558.058)"/>
+    </g>
+  </g>
+</svg>

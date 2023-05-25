@@ -44,7 +44,7 @@ module.exports = {
       postcss: {
         plugins: [
           require("postcss-plugin-px2rem")({
-            rootValue: 192, //换算基数， 默认100  ，这样的话把根标签的字体规定为1rem为50px,这样就可以从设计稿上量出多少个px直接在代码中写多上px了。
+            rootValue: 54, //换算基数， 默认100  ，这样的话把根标签的字体规定为1rem为50px,这样就可以从设计稿上量出多少个px直接在代码中写多上px了。
             // unitPrecision: 5, //允许REM单位增长到的十进制数字。
             //propWhiteList: [],  //默认值是一个空数组，这意味着禁用白名单并启用所有属性。
             // propBlackList: [], //黑名单
@@ -80,15 +80,15 @@ module.exports = {
     https: false, // 编译失败时刷新页面
     hot: true, // 开启热加载
     hotOnly: false,
-    // proxy: {
-    //   "/devApi": {
-    //     target: "", //API服务器的地址
-    //     changeOrigin: true,
-    //     pathRewrite: {
-    //       "^/devApi": ''
-    //     }
-    //   }
-    // },
+    proxy: {
+      [process.env.VUE_APP_API]: {
+          target: process.env.VUE_API_DEV_TARGET, //API服务器的地址
+          changeOrigin: true,
+          pathRewrite: {
+              [`^${process.env.VUE_APP_API}`]: ''
+          }
+      }
+    },
     overlay: {
       // 全屏模式下是否显示脚本错误
       warnings: true,
