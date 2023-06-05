@@ -35,7 +35,7 @@
         layout="total, sizes, prev, pager, next, jumper" :total="tableData.length">
       </el-pagination>
     </div>
-    <div>测试变量 这种方式是可以的，只有添加新元素和新属性时需要$set{{ params.pageNum }}</div>
+    <div class="content_show">测试变量 这种方式是可以的，只有添加新元素和新属性时需要$set{{ params.pageNum }}</div>
   </div>
 </template>
 
@@ -263,5 +263,9 @@ export default {
 svg {
   width: 100% !important;
   height: 100vh !important;
+}
+
+.content_show {
+  width: 500px;
 }
 </style>

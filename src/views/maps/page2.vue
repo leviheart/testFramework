@@ -14,9 +14,9 @@ export default {
   name: "addMarker",
   data() {
     return {
-      b:{
-        a:1,
-        c:3
+      b: {
+        a: 1,
+        c: 3
       }
     };
   },
@@ -102,11 +102,11 @@ export default {
       // var a = map.queryRenderedFeatures({ layers: ["linesLayer"] });
       // var b =map.getLayer("linesLayer")
       // console.log(a,b);
-      map.on("click", "linesLayer", function(e) {
+      map.on("click", "linesLayer", function (e) {
         //变色
         var features = map.queryRenderedFeatures({ layers: ["linesLayer"] });
         console.log("features", features);
-        var targetFeature = features.find(function(feature) {
+        var targetFeature = features.find(function (feature) {
           return feature.properties.id === 1;
         });
         if (targetFeature) {
@@ -139,11 +139,12 @@ export default {
   left: 0;
   overflow: hidden;
 }
+
 .mapboxgl-ctrl {
   display: none !important;
 }
 
-.wrap{
+.wrap {
   margin-top: 100px;
   height: 200px;
   width: 200px;
