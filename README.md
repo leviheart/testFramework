@@ -7,6 +7,7 @@
 3.3 地图添加雷达波纹
 4.23 安装gulp
 4.26 添加级联page5
+5.4 有node-sass和sass-loader
 
 ## Project setup
 

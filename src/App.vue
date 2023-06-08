@@ -17,6 +17,4 @@
 </template>
 
 <style lang="scss">
-body{
-  background: #ccc;
-}</style>
+</style>

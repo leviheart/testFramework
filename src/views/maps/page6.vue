@@ -20,17 +20,18 @@ export default {
     };
   },
   mounted() {
-    // const searchParams = new URLSearchParams(
-    //   window.location.hash.split("?")[1]
-    // );
-    // const psrId = searchParams.get("psrId");
-    // const psrType = searchParams.get("psrType");
-    // console.log(
-    //   window.location.hash.split("?")[1],
-    //   searchParams,
-    //   psrId,
-    //   psrType
-    // );
+    const searchParams = new URLSearchParams(
+      window.location.hash.split("?")[1]
+      // window.location.href
+    );
+    const psrId = searchParams.get("psrId");
+    const psrType = searchParams.get("psrType");
+    console.log(
+      window.location.hash.split("?")[1],
+      searchParams,
+      psrId,
+      psrType
+    );
   },
   methods: {
     async handleGet() {
