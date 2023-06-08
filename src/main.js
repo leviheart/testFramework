@@ -19,14 +19,15 @@ import { svgWheel, svgDrag } from "@c/directive/Index.js";
 //   Option,
 //   Tree
 // } from "element-ui";
+import ElementUI from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
 import eChartFn from "@/components/chart/index.js";
 import ChartPanel from "@/components/chart/index.vue";
 import "lib-flexible"; // 移动端适配 (目录: hello-world/src/main.js)
 import VueAMap from "vue-amap";
-import ElementUI from 'element-ui';
-import * as echarts from 'echarts'
+import * as echarts from "echarts";
 // import GlobalRouteHooks from './plugins/global-route-hooks';
-Vue.prototype.$echarts = echarts
+Vue.prototype.$echarts = echarts;
 
 console.log(ChartPanel);
 Vue.component(ChartPanel.name, ChartPanel);
@@ -36,7 +37,6 @@ Vue.use(ElementUI);
 // Vue.use(GlobalRouteHooks, {
 //   pagesToOperate: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6'],
 // });
-
 
 // Vue.use(Button);
 // Vue.use(Select);
@@ -48,7 +48,6 @@ Vue.use(ElementUI);
 // Vue.use(Tag);
 // Vue.use(Option);
 // Vue.use(Tree);
-
 
 Vue.use(svgWheel);
 Vue.use(svgDrag);
