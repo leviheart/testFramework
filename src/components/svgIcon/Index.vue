@@ -3,35 +3,37 @@
     <use :xlink:href="iconName" />
   </svg>
 </template>
-
 <script>
 export default {
-  name: 'SvgIcon',
+  name: "SvgIcon",
   props: {
+    // 定义iconClass属性，类型为String，必填
     iconClass: {
       type: String,
-      required: true
+      required: true,
     },
+    // 定义className属性，类型为String，默认为空
     className: {
       type: String,
-      default: ''
-    }
+      default: "",
+    },
   },
   computed: {
+    // 根据iconClass属性生成iconName
     iconName() {
-      return `#icon-${this.iconClass}`
+      return `#icon-${this.iconClass}`;
     },
+    // 根据className属性生成svgClass
     svgClass() {
       if (this.className) {
-        return 'svg-icon ' + this.className
+        return "svg-icon " + this.className;
       } else {
-        return 'svg-icon'
+        return "svg-icon";
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
-
 <style scoped>
 .svg-icon {
   width: 1em;
