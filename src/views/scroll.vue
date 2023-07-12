@@ -17,23 +17,19 @@
     ></svg-icon>
   </div>
 </template>
-
 <style>
 .container {
   display: flex;
   flex-wrap: wrap;
 }
-
 .row {
   display: flex;
   width: 100%;
 }
-
 .row > div {
   flex: 1 1 50%; /* 每行显示两个元素 */
 }
 </style>
-
 <script>
 export default {
   data() {
@@ -62,7 +58,6 @@ export default {
     // 通过异步请求或其他方式获取下拉菜单的元素数据，并将数据存储在items数组中
     // 示例数据:
     this.items = ["元素1", "元素2", "元素3", "元素4", "元素5", "元素6"];
-
     // 分组处理数据
     this.groupedItems = this.items.reduce((result, item, index) => {
       if (index % 2 === 0) {
@@ -72,7 +67,6 @@ export default {
       }
       return result;
     }, []);
-
     this.displayedGroups = this.groupedItems.slice(0, 1); // 默认只显示第一行分组
   },
 };
