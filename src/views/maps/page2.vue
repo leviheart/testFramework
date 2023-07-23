@@ -47,28 +47,46 @@ export default {
     init(map) {
       // 添加地图数据源
       console.log(lineData.features.length);
-      lineData.features.forEach((element, index) => {
-        map.addSource(`lines${index}`, {
-          type: "geojson",
-          data: {
-            type: "FeatureCollection",
-            features: [element],
-          },
-        });
-        // 添加图层
-        map.addLayer({
-          id: `linesLayer${index}`,
-          type: "line",
-          source: `lines${index}`,
-          layout: {
-            "line-cap": "round",
-            "line-join": "round",
-          },
-          paint: {
-            "line-color": "blue",
-            "line-width": 5,
-          },
-        });
+      // lineData.features.forEach((element, index) => {
+      //   map.addSource(`lines${index}`, {
+      //     type: "geojson",
+      //     data: {
+      //       type: "FeatureCollection",
+      //       features: [element],
+      //     },
+      //   });
+      //   // 添加图层
+      //   map.addLayer({
+      //     id: `linesLayer${index}`,
+      //     type: "line",
+      //     source: `lines${index}`,
+      //     layout: {
+      //       "line-cap": "round",
+      //       "line-join": "round",
+      //     },
+      //     paint: {
+      //       "line-color": "blue",
+      //       "line-width": 5,
+      //     },
+      //   });
+      // });
+      map.addSource(`lines`, {
+        type: "geojson",
+        data: lineData,
+      });
+      // 添加图层
+      map.addLayer({
+        id: `linesLayer`,
+        type: "line",
+        source: `lines`,
+        layout: {
+          "line-cap": "round",
+          "line-join": "round",
+        },
+        paint: {
+          "line-color": "blue",
+          "line-width": 5,
+        },
       });
       // 点击线条时，改变线条样式
       //在这段代码中，"butt"是用于设置地图上线条的线帽样式的一种选项。线帽是线条的终点样式，可以是不同的形状，比如平直的线帽（butt）、圆形线帽（round）等。
