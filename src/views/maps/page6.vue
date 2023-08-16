@@ -10,6 +10,7 @@
 </template>
 <script>
 import axios from "axios";
+import {GetDetailed} from "@/api/apiService";
 export default {
   data() {
     return {
@@ -20,6 +21,7 @@ export default {
     };
   },
   mounted() {
+    GetDetailed();
     const searchParams = new URLSearchParams(
       window.location.hash.split("?")[1]
       // window.location.href

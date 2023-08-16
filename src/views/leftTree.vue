@@ -5,7 +5,7 @@
     <svg-icon className="svg-icon-18" iconClass="email"></svg-icon>
     <svg-icon className="svg-icon-18" iconClass="phone"></svg-icon>
     <svg-icon className="svg-icon-18" iconClass="sousuo1"></svg-icon>
-    <img :src="eye" alt="SVG Icon" />
+    <!-- <img :src="eye" alt="SVG Icon" /> -->
     <!-- ymx问题测试 -->
     <div style="display: inline-block">
       <el-dialog :visible.sync="dialog" :close-on-click-modal="false" :before-close="cancel" :title="title" append-to-body
