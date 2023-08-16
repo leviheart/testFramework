@@ -1,95 +1,84 @@
+vue
 <template>
   <div>
-    <div class="wrap" v-for="item in b">
+    <!-- <div class="wrap" v-for="item in b">
       {{ item }}
       {{ item }}
-    </div>
+    </div> -->
+    <!-- 在地图上显示的div -->
+    <div id="map2"></div>
   </div>
 </template>
-
 <script>
 import mapboxgl from "mapbox-gl";
 import page1 from "@/views/maps/page1";
+import lineData from "@/assets/geoData/lineData";
 export default {
   name: "addMarker",
   data() {
     return {
       b: {
         a: 1,
-        c: 3
-      }
+        c: 3,
+      },
     };
   },
   components: {
     page1,
   },
   mounted() {
-    // mapboxgl.accessToken = `pk.eyJ1IjoibHVrYXNtYXJ0aW5lbGxpIiwiYSI6ImNpem85dmhwazAyajIyd284dGxhN2VxYnYifQ.HQCmyhEXZUTz3S98FMrVAQ`;
-    // let that = this;
-    // const map = new mapboxgl.Map({
-    //   container: "map2",
-    //   // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-    //   style: "mapbox://styles/mapbox/streets-v11",
-    //   center: [118.79, 32.06],
-    //   zoom: 18,
-    // });
-    // map.on("load", function() {
-    //   that.init(map);
-    // });
+    // 设置Mapbox的访问令牌
+    mapboxgl.accessToken = `pk.eyJ1IjoibHVrYXNtYXJ0aW5lbGxpIiwiYSI6ImNpem85dmhwazAyajIyd284dGxhN2VxYnYifQ.HQCmyhEXZUTz3S98FMrVAQ`;
+    let that = this;
+    // 初始化地图
+    const map = new mapboxgl.Map({
+      container: "map2", // 地图容器ID
+      style: "mapbox://styles/mapbox/streets-v11", // 地图样式
+      center: [118.79, 32.06], // 地图初始中心点
+      zoom: 18, // 地图初始缩放级别
+    });
+    window.map = map;
+    // 地图加载完成后，调用init方法初始化
+    map.on("load", function() {
+      that.init(map);
+    });
   },
   methods: {
     init(map) {
-      map.addSource("lines", {
+      // 添加地图数据源
+      console.log(lineData.features.length);
+      // lineData.features.forEach((element, index) => {
+      //   map.addSource(`lines${index}`, {
+      //     type: "geojson",
+      //     data: {
+      //       type: "FeatureCollection",
+      //       features: [element],
+      //     },
+      //   });
+      //   // 添加图层
+      //   map.addLayer({
+      //     id: `linesLayer${index}`,
+      //     type: "line",
+      //     source: `lines${index}`,
+      //     layout: {
+      //       "line-cap": "round",
+      //       "line-join": "round",
+      //     },
+      //     paint: {
+      //       "line-color": "blue",
+      //       "line-width": 5,
+      //     },
+      //   });
+      // });
+      map.addSource(`lines`, {
         type: "geojson",
-        data: {
-          type: "FeatureCollection",
-          features: [
-            {
-              type: "Feature",
-              properties: {
-                id: 1,
-              },
-              geometry: {
-                type: "LineString",
-                coordinates: [
-                  [118.79, 32.06],
-                  [118.81, 32.06],
-                ],
-              },
-            },
-            {
-              type: "Feature",
-              properties: {
-                id: 2,
-              },
-              geometry: {
-                type: "LineString",
-                coordinates: [
-                  [118.79, 32.06],
-                  [118.79, 32.08],
-                ],
-              },
-            },
-            {
-              type: "Feature",
-              properties: {
-                id: 3,
-              },
-              geometry: {
-                type: "LineString",
-                coordinates: [
-                  [118.79, 32.06],
-                  [118.81, 32.08],
-                ],
-              },
-            },
-          ],
-        },
+        data: lineData,
       });
+      // 添加图层
       map.addLayer({
-        id: "linesLayer",
+        id: `linesLayer`,
         type: "line",
-        source: "lines",
+        source: `lines`,
         layout: {
           "line-cap": "round",
           "line-join": "round",
@@ -99,22 +88,17 @@ export default {
           "line-width": 5,
         },
       });
-      // var a = map.queryRenderedFeatures({ layers: ["linesLayer"] });
-      // var b =map.getLayer("linesLayer")
-      // console.log(a,b);
-      map.on("click", "linesLayer", function (e) {
-        //变色
+      // 点击线条时，改变线条样式
+      //在这段代码中，"butt"是用于设置地图上线条的线帽样式的一种选项。线帽是线条的终点样式，可以是不同的形状，比如平直的线帽（butt）、圆形线帽（round）等。
+      //在这里，如果满足条件["==", ["get", "id"], targetFeature.properties.id]，则线条的线帽样式将被设置为"butt"，否则将设置为"round"。
+      map.on("click", "linesLayer", function(e) {
         var features = map.queryRenderedFeatures({ layers: ["linesLayer"] });
         console.log("features", features);
-        var targetFeature = features.find(function (feature) {
+        var targetFeature = features.find(function(feature) {
           return feature.properties.id === 1;
         });
         if (targetFeature) {
-          // map.setPaintProperty("linesLayer", "line-color", {
-          //   property: "id",
-          //   type: "categorical",
-          //   stops: [[targetFeature.properties.id, "red"], [2, "red"]],
-          // });
+          //"line-cap" "line-color" "butt","round",
           map.setLayoutProperty("linesLayer", "line-cap", [
             "case",
             ["==", ["get", "id"], targetFeature.properties.id],
@@ -128,22 +112,15 @@ export default {
 };
 </script>
 <style scoped>
-#map {
-  margin-top: 100px;
-  width: 100%;
-  height: calc(100% - 100px);
+#map2 {
   position: absolute;
   top: 0;
-  right: 0;
   bottom: 0;
-  left: 0;
-  overflow: hidden;
+  width: 100%;
 }
-
 .mapboxgl-ctrl {
   display: none !important;
 }
-
 .wrap {
   margin-top: 100px;
   height: 200px;
