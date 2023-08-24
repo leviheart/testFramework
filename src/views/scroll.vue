@@ -54,7 +54,20 @@ export default {
       }
     },
   },
+  destroyed() {
+    console.log("Component destroyed");
+  },
+  beforeDestroy() {
+    console.log("Component beforeDestroy");
+  },
+  activated() {
+    console.log('Component activated');
+  },
+  deactivated() {
+    console.log('Component deactivated');
+  },
   mounted() {
+    console.log("Component mounted")
     // 通过异步请求或其他方式获取下拉菜单的元素数据，并将数据存储在items数组中
     // 示例数据:
     this.items = ["元素1", "元素2", "元素3", "元素4", "元素5", "元素6"];
