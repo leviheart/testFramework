@@ -34,15 +34,17 @@ service.interceptors.response.use(function (response) {
     if (response.status !== 200) {
         // Message.error(data.message);
         Message.error("请求成功,但没有完全成功");
+        // return response;
         return Promise.reject(data);
     } else {
         Message.success("请求成功");
-        console.log(response,"response")
+        console.log(response,"response",Promise.resolve(data))
         return response;
         // return Promise.resolve(data);
     }
 
 }, function (error) {
+    console.log(error,"error")
     Message.error("请求失败");
 
     // 对响应错误做点什么

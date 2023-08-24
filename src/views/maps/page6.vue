@@ -21,7 +21,9 @@ export default {
     };
   },
   mounted() {
-    GetDetailed();
+    GetDetailed().then(res =>{
+      console.log(res,"res")
+    });
     const searchParams = new URLSearchParams(
       window.location.hash.split("?")[1]
       // window.location.href
