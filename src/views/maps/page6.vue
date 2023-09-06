@@ -10,7 +10,7 @@
 </template>
 <script>
 import axios from "axios";
-import {GetDetailed} from "@/api/apiService";
+import { GetDetailed } from "@/api/apiService";
 export default {
   data() {
     return {
@@ -21,8 +21,8 @@ export default {
     };
   },
   mounted() {
-    GetDetailed().then(res =>{
-      console.log(res,"res")
+    GetDetailed().then((res) => {
+      console.log(res, "res");
     });
     const searchParams = new URLSearchParams(
       window.location.hash.split("?")[1]
@@ -39,12 +39,18 @@ export default {
   },
   methods: {
     async handleGet() {
-      try {
-        const response = await axios.get(this.url, JSON.parse(JSON.stringify(this.getParams)));
-        this.response = response.data;
-      } catch (error) {
-        console.error(error);
-      }
+      let features = ["3245324"];
+      console.log(features, this);
+      this.$bus.$emit("mapclick", features[0], "1");
+      // try {
+      //   const response = await axios.get(
+      //     this.url,
+      //     JSON.parse(JSON.stringify(this.getParams))
+      //   );
+      //   this.response = response.data;
+      // } catch (error) {
+      //   console.error(error);
+      // }
     },
     async handlePost() {
       try {

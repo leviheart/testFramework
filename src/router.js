@@ -41,5 +41,10 @@ export default new Router({
       component: () => import("@/views/maps/page6.vue"),
       name: "page6",
     },
+    {
+      path: "/maps/page7",
+      component: () => import("@/views/maps/page7.vue"),
+      name: "page6",
+    },
   ],
 });

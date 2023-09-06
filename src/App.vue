@@ -8,6 +8,7 @@
       <el-menu-item index="/maps/page4">Page 4</el-menu-item>
       <el-menu-item index="/maps/page5">Page 5</el-menu-item>
       <el-menu-item index="/maps/page6">Page 6</el-menu-item>
+      <el-menu-item index="/maps/page7">Page 7</el-menu-item>
     </el-menu>
 
     <keep-alive>

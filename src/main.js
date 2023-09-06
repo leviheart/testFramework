@@ -26,6 +26,8 @@ import ChartPanel from "@/components/chart/index.vue";
 import "lib-flexible"; // 移动端适配 (目录: hello-world/src/main.js)
 import VueAMap from "vue-amap";
 import * as echarts from "echarts";
+import Bus from "@/assets/bus.js";
+
 // import GlobalRouteHooks from './plugins/global-route-hooks';
 Vue.prototype.$echarts = echarts;
 
@@ -51,6 +53,7 @@ Vue.use(ElementUI);
 
 Vue.use(svgWheel);
 Vue.use(svgDrag);
+Vue.use(Bus);
 Vue.config.productionTip = false;
 
 //注册高德
