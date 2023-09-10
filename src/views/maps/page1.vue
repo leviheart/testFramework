@@ -1,22 +1,31 @@
 <template>
   <div>
-    <div id="test"></div>
+    <el-button type="primary" @click="openDialog">打开弹框</el-button>
+    <el-dialog title="提示" :visible.sync="dialogVisible" width="90%">
+      <div id="test"></div>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      dialogVisible: false,
+    };
   },
-  mounted() {
-    this.getECharts();
-  },
+  mounted() {},
   methods: {
+    openDialog() {
+      this.dialogVisible = true;
+      this.$nextTick(() => {
+        this.getECharts();
+      });
+    },
     getECharts() {
       // 基于准备好的dom，初始化echarts实例
       var myChart = this.$echarts.init(document.getElementById("test"), null, {
-        // width: 100,
+        renderer: "svg",
         height: 500,
       });
       let option = {
