@@ -1,17 +1,16 @@
 <template>
   <div>
     <el-button type="primary" @click="openDialog">打开弹框</el-button>
-    <el-dialog
+    <!-- <el-dialog
       title="提示"
       :visible.sync="dialogVisible"
       width="90%"
-      @close="handleClose"
-    >
+    > -->
       <el-button type="primary" @click="onVisble">更改显示</el-button>
       <charDialog ref="charDialog1" :showEcharts="showEcharts1"></charDialog>
       <charDialog ref="charDialog2" :showEcharts="showEcharts2"></charDialog>
       <charDialog ref="charDialog3" :showEcharts="showEcharts3"></charDialog>
-    </el-dialog>
+    <!-- </el-dialog> -->
   </div>
 </template>
 
@@ -30,9 +29,18 @@ export default {
     charDialog,
   },
   mounted() {},
+  activated(){
+    console.log("我被激活了");
+  },
+  deactivated(){
+    console.log("我被释放了");
+  },
   methods: {
     openDialog() {
       this.dialogVisible = true;
+      this.showEcharts1 = false;
+      this.showEcharts2 = true;
+      this.showEcharts3 = false;
       this.$nextTick(() => {
         this.$refs.charDialog1.getECharts();
         this.$refs.charDialog2.getECharts();
@@ -40,12 +48,18 @@ export default {
       });
     },
     onVisble() {
-      this.showEcharts1 = false;
+      this.showEcharts1 = true;
       this.showEcharts2 = false;
       this.showEcharts3 = false;
+      this.$nextTick(() => {
+        this.$refs.charDialog1.getECharts();
+        this.$refs.charDialog2.getECharts();
+        this.$refs.charDialog3.getECharts();
+      });
     },
   },
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+</style>

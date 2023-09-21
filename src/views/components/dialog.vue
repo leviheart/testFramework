@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="container">
     <el-empty
       class="chartnull"
       v-show="!showEcharts"
@@ -25,8 +25,17 @@ export default {
     };
   },
   mounted() {},
+  activated(){
+    console.log("我被激活了");
+  },
+  deactivated(){
+    console.log("我被释放了");
+  },
   methods: {
     getECharts() {
+      // if(!this.showEcharts){
+      //   return
+      // }
       // 基于准备好的dom，初始化echarts实例
       myChart = this.$echarts.init(document.getElementById(this.chartId), null, {
         renderer: "svg",
@@ -116,19 +125,6 @@ export default {
         ],
       };
       option1 && myChart.setOption(option1);
-      window.addEventListener("resize", this.chartResize);
-    },
-    chartResize() {
-      if (timer) {
-        clearTimeout(timer);
-      }
-      timer = setTimeout(() => {
-        console.log("resize");
-        myChart.resize();
-      }, 500);
-    },
-    handleClose() {
-      window.removeEventListener("resize", this.chartResize);
     },
   },
 };
@@ -136,9 +132,9 @@ export default {
 
 <style scoped>
 .chartClass {
-  height: 246px;
+  height: 146px;
 }
 .chartnull {
-  height: 246px;
+  height: 146px;
 }
 </style>
