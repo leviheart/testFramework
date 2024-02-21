@@ -47,29 +47,29 @@ export default {
     init(map) {
       // 添加地图数据源
       console.log(lineData.features.length);
-      // lineData.features.forEach((element, index) => {
-      //   map.addSource(`lines${index}`, {
-      //     type: "geojson",
-      //     data: {
-      //       type: "FeatureCollection",
-      //       features: [element],
-      //     },
-      //   });
-      //   // 添加图层
-      //   map.addLayer({
-      //     id: `linesLayer${index}`,
-      //     type: "line",
-      //     source: `lines${index}`,
-      //     layout: {
-      //       "line-cap": "round",
-      //       "line-join": "round",
-      //     },
-      //     paint: {
-      //       "line-color": "blue",
-      //       "line-width": 5,
-      //     },
-      //   });
-      // });
+      /* lineData.features.forEach((element, index) => {
+        map.addSource(`lines${index}`, {
+          type: "geojson",
+          data: {
+            type: "FeatureCollection",
+            features: [element],
+          },
+        });
+        // 添加图层
+        map.addLayer({
+          id: `linesLayer${index}`,
+          type: "line",
+          source: `lines${index}`,
+          layout: {
+            "line-cap": "round",
+            "line-join": "round",
+          },
+          paint: {
+            "line-color": "blue",
+            "line-width": 5,
+          },
+        });
+      }); */
       map.addSource(`lines`, {
         type: "geojson",
         data: lineData,
