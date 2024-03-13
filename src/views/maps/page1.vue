@@ -3,6 +3,8 @@
     <el-button type="primary" @click="openDialog">打开弹框</el-button>
     <el-dialog title="提示" :visible.sync="dialogVisible" width="90%">
       <div id="test"></div>
+      <div id="bar"></div>
+      <div id="line"></div>
     </el-dialog>
   </div>
 </template>
@@ -20,13 +22,15 @@ export default {
       this.dialogVisible = true;
       this.$nextTick(() => {
         this.getECharts();
+        this.createBarChart();
+        this.createLineChart();
       });
     },
     getECharts() {
       // 基于准备好的dom，初始化echarts实例
       var myChart = this.$echarts.init(document.getElementById("test"), null, {
         renderer: "svg",
-        height: 500,
+        height: 250,
       });
       let option = {
         tooltip: {
@@ -114,11 +118,9 @@ export default {
       option1 && myChart.setOption(option1);
       myChart.on("click", (params) => {
         console.log(params);
-        this.changeList(params);
       });
       myChart.on("legendselectchanged", (params) => {
         console.log(params, option);
-        this.changeList(params);
         //加上这一行
         myChart.setOption({
           legend: { selected: { [params.name]: true } },
@@ -135,7 +137,87 @@ export default {
         }, 500);
       };
     },
-    changeList(params) {},
+    //创建一张柱状图表
+    createBarChart() {
+      let myChart = this.$echarts.init(document.getElementById("bar"), null, {
+        renderer: "svg",
+        height: 250,
+      });
+      let option = {
+        xAxis: {
+          type: "category",
+          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            data: [120, 200, 150, 80, 70, 110, 130],
+            type: "bar",
+            itemStyle: {
+              emphasis: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: "rgba(0, 0, 0, 0.5)",
+              },
+            },
+          },
+        ],
+      };
+      myChart.setOption(option);
+      myChart.on("legendselectchanged", (params) => {
+        console.log(params, option);
+        //加上这一行
+        myChart.setOption({
+          legend: { selected: { [params.name]: true } },
+        });
+      });
+      //防抖
+      let timer;
+      window.onresize = function() {
+        if (timer) {
+          clearTimeout(timer);
+        }
+        timer = setTimeout(() => {
+          myChart.resize();
+        }, 500);
+      };
+    },
+    //创建一个折线图
+    createLineChart() {
+      let myChart = this.$echarts.init(document.getElementById("line"), null, {
+        renderer: "svg",
+        height: 250,
+      });
+      let option = {
+        xAxis: {
+          type: "category",
+          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            data: [150, 230, 224, 218, 135, 147, 260],
+            type: "line",
+            smooth: true,
+          },
+        ],
+      };
+      myChart.setOption(option);
+      //防抖
+      let timer;
+      window.onresize = function() {
+        if (timer) {
+          clearTimeout(timer);
+        }
+        timer = setTimeout(() => {
+          myChart.resize();
+        }, 500);
+      };
+    },
   },
 };
 </script>

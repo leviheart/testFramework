@@ -43,7 +43,8 @@ export default new Router({
     },
     {
       path: "/maps/page7",
-      component: () => import("@/views/maps/page7.vue"),
+      // component: () => import("@/views/maps/page7.vue"),
+      component: () => import("@/components/Three.vue"),
       name: "page6",
     },
   ],
