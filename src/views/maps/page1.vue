@@ -10,16 +10,32 @@
 </template>
 
 <script>
+import charDialog from "../components/dialog.vue";
 export default {
   data() {
     return {
       dialogVisible: false,
+      showEcharts1: true,
+      showEcharts2: true,
+      showEcharts3: true,
     };
   },
+  components: {
+    charDialog,
+  },
   mounted() {},
+  activated() {
+    console.log("我被激活了");
+  },
+  deactivated() {
+    console.log("我被释放了");
+  },
   methods: {
     openDialog() {
       this.dialogVisible = true;
+      this.showEcharts1 = false;
+      this.showEcharts2 = true;
+      this.showEcharts3 = false;
       this.$nextTick(() => {
         this.getECharts();
         this.createBarChart();
@@ -126,16 +142,6 @@ export default {
           legend: { selected: { [params.name]: true } },
         });
       });
-      //防抖
-      let timer;
-      window.onresize = function() {
-        if (timer) {
-          clearTimeout(timer);
-        }
-        timer = setTimeout(() => {
-          myChart.resize();
-        }, 500);
-      };
     },
     //创建一张柱状图表
     createBarChart() {
@@ -222,4 +228,4 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped></style>
