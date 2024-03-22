@@ -22,9 +22,9 @@ export default new Router({
       name: "page2",
     },
     {
-      path: "/maps/page3",
-      component: () => import("@/views/maps/page3.vue"),
-      name: "page3",
+      path: "/leftTree",
+      component: () => import("@/views/leftTree.vue"),
+      name: "leftTree",
     },
     {
       path: "/maps/page4",
@@ -44,7 +44,12 @@ export default new Router({
     {
       path: "/maps/page7",
       component: () => import("@/views/maps/page7.vue"),
-      name: "page6",
+      name: "page7",
+    },
+    {
+      path: "/scroll",
+      component: () => import("@/views/scroll.vue"),
+      name: "scroll",
     },
   ],
 });

@@ -1,14 +1,76 @@
-const path = require("path");
+const path = require("path"); // 引入node.js中专门操作路径的模块
+const CompressionWebpackPlugin = require("compression-webpack-plugin");
+// 引入压缩插件,需要先运行 `npm install --save-dev compression-webpack-plugin` 安装
+
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
+// 引入打包分析插件,需要先运行 `npm install --save-dev webpack-bundle-analyzer` 安装
+
+const os = require("os"); // 引入node.js中的操作系统相关模块
+const ProductionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i; // 设置需要gzip压缩的文件格式
+const IS_PROD = ["production", "prod"].includes(process.env.NODE_ENV); // 判断是否为生产环境
+
 module.exports = {
-  // 基本路径
-  publicPath: "/",
-  // 输出文件目录
-  outputDir: "dist",
-  // eslint-loader 是否在保存的时候检查
-  lintOnSave: false,
-  /** vue3.0内置了webpack所有东西，
-   * webpack配置,see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
-   **/
+  publicPath: IS_PROD ? "/prod-sub-path/" : "/", // 基本路径
+  outputDir: "dist", // 输出文件目录
+  assetsDir: "static", // 放置静态资源的目录
+  lintOnSave: false, // eslint-loader 是否在保存的时候检查
+  indexPath: "index.html", // html输出路径
+  filenameHashing: true, // 文件名是否使用hash值
+  productionSourceMap: false, // 是否在构建后生成source map文件
+  configureWebpack: (config) => {
+    config.resolve = {
+      extensions: [".js", ".json", ".vue"], // 自动添加文件名后缀
+      alias: {
+        vue: "vue/dist/vue.js",
+        "@": path.resolve(__dirname, "./src"),
+        "@c": path.resolve(__dirname, "./src/components"),
+      },
+    };
+
+    // 生产环境相关配置
+    if (IS_PROD) {
+      // 开启 Gzip 压缩
+      config.plugins.push(
+        new CompressionWebpackPlugin({
+          filename: "[path].gz[query]", // 目标文件名
+          algorithm: "gzip", // 压缩算法
+          test: ProductionGzipExtensions, // 满足正则表达式的文件会被压缩
+          threshold: 10240, // 只有大小大于该值的资源会被处理,单位是 bytes
+          minRatio: 0.8, // 只有压缩率小于这个值的资源才会被处理
+        })
+      );
+
+      // 打包分析
+      if (process.env.IS_ANALYZE) {
+        config.plugins.push(new BundleAnalyzerPlugin());
+      }
+    }
+
+    // 代码分割
+    config.optimization = {
+      splitChunks: {
+        cacheGroups: {
+          vendors: {
+            name: "chunk-vendors",
+            test: /[\\/]node_modules[\\/]/,
+            priority: -10,
+            chunks: "initial",
+          },
+          common: {
+            name: "chunk-common",
+            minChunks: 2,
+            priority: -20,
+            chunks: "initial",
+            reuseExistingChunk: true,
+          },
+        },
+      },
+    };
+
+    // 关闭源码映射
+    config.devtool = IS_PROD ? "none" : "cheap-module-eval-source-map";
+  },
   chainWebpack: (config) => {
     const svgRule = config.module.rule("svg");
     svgRule.uses.clear();
@@ -19,60 +81,43 @@ module.exports = {
         symbolId: "icon-[name]",
         include: ["./src/icons"],
       });
+    // 需要先运行 `npm install --save-dev svg-sprite-loader` 安装 svg-sprite-loader
+
+    config.plugins.delete("prefetch");
+    config.plugins.delete("preload");
+
+    config.module
+      .rule("images")
+      .use("image-webpack-loader")
+      .loader("image-webpack-loader")
+      .options({
+        bypassOnDebug: true,
+      });
+    // 需要先运行 `npm install --save-dev image-webpack-loader` 安装 image-webpack-loader
+
+    config.devServer.disableHostCheck(process.env.NODE_ENV === "development");
   },
-  configureWebpack: (config) => {
-    config.resolve = {
-      // 配置解析别名
-      extensions: [".js", ".json", ".vue"], // 自动添加文件名后缀
-      alias: {
-        vue: "vue/dist/vue.js",
-        "@": path.resolve(__dirname, "./src"),
-        "@c": path.resolve(__dirname, "./src/components"),
-      },
-    };
-  },
-  // 生产环境是否生成 sourceMap 文件
-  productionSourceMap: false,
-  // css相关配置
   css: {
-    // 是否使用css分离插件 ExtractTextPlugin
-    extract: true,
-    // 开启 CSS source maps?
-    sourceMap: false,
-    // css预设器配置项
+    extract: true, // 是否使用css分离插件 ExtractTextPlugin
+    sourceMap: false, // 开启 CSS source maps?
     loaderOptions: {
       postcss: {
         plugins: [
           require("postcss-plugin-px2rem")({
-            rootValue: 100, //换算基数， 默认100  ，这样的话把根标签的字体规定为1rem为100px,这样就可以从设计稿上量出多少个px直接在代码中写多上px了。
-            // unitPrecision: 5, //允许REM单位增长到的十进制数字。
-            //propWhiteList: [],  //默认值是一个空数组，这意味着禁用白名单并启用所有属性。
-            // propBlackList: [], //黑名单
-            exclude: /(node_module)/, //默认false，可以（reg）利用正则表达式排除某些文件夹的方法，例如/(node_module)\/如果想把前端UI框架内的px也转换成rem，请把此属性设为默认值
-            // selectorBlackList: [], //要忽略并保留为px的选择器
-            // ignoreIdentifier: false,  //（boolean/string）忽略单个属性的方法，启用ignoreidentifier后，replace将自动设置为true。
-            // replace: true, // （布尔值）替换包含REM的规则，而不是添加回退。
-            mediaQuery: false, //（布尔值）允许在媒体查询中转换px。
-            minPixelValue: 0, //设置要替换的最小像素值(3px会被转rem)。 默认 0
+            rootValue: 100, // 换算基数，默认100，这样的话把根标签的字体规定为1rem为100px
+            exclude: /(node_module)/, // 排除node_modules目录下的文件
+            mediaQuery: false, // 允许在媒体查询中转换px
+            minPixelValue: 0, // 设置要替换的最小像素值
           }),
         ],
       },
       scss: {
-        prependData: `@import "@/styles/index.scss";`,
+        prependData: `@import "~@/styles/index.scss";`, // 会在每个scss文件顶部自动引入一次
       },
     },
-    // requireModuleExtension: false
-    // 启用 CSS modules for all css / pre-processor files.
-    // modules: false
+    // 需要先运行 `npm install --save-dev postcss-plugin-px2rem` 安装 postcss-plugin-px2rem
   },
-  // use thread-loader for babel & TS in production build
-  // enabled by default if the machine has more than 1 cores
-  parallel: require("os").cpus().length > 1,
-  /**
-   *  PWA 插件相关配置,see https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa
-   */
-  pwa: {},
-  // webpack-dev-server 相关配置
+  parallel: require("os").cpus().length > 1, // 多核机器开启并行压缩
   devServer: {
     open: false, // 编译完成是否打开网页
     host: "0.0.0.0", // 指定使用地址，默认localhost,0.0.0.0代表可以被外界访问
@@ -81,23 +126,20 @@ module.exports = {
     hot: true, // 开启热加载
     hotOnly: false,
     proxy: {
+      // 配置跨域
       [process.env.VUE_APP_API]: {
         target: process.env.VUE_API_DEV_TARGET, //API服务器的地址
         changeOrigin: true,
         pathRewrite: {
-          [`^${process.env.VUE_APP_API}`]: "",
+          ["^" + process.env.VUE_APP_API]: "",
         },
       },
     },
     overlay: {
-      // 全屏模式下是否显示脚本错误
       warnings: true,
       errors: true,
     },
     before: (app) => {},
   },
-  /**
-   * 第三方插件配置
-   */
-  pluginOptions: {},
+  pluginOptions: {}, // 第三方插件配置
 };
