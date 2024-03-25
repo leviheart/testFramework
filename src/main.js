@@ -6,7 +6,7 @@ import "@/styles/index.scss";
 // svgicon
 import "@/icons";
 import { svgWheel, svgDrag } from "@c/directive/Index.js";
-
+import axios from "axios";
 // import {
 //   Button,
 //   Select,
@@ -72,6 +72,14 @@ VueAMap.initAMapApiLoader({
   ],
   v: "1.4.4",
 });
+
+Vue.prototype.$axios = axios; //全局注册，使用方法为:this.$axios
+if (process.env.NODE_ENV === "production") {
+  // 生产环境下的后台地址 直接配置就会跨域，无法用nginx代理
+  axios.defaults.baseURL = "http://localhost:80";
+  console.log(axios.defaults.baseURL, "axios.defaults.baseURL");
+}
+
 new Vue({
   router,
   store,

@@ -143,6 +143,7 @@ export default {
         url: this.url,
         method: this.method,
       };
+      console.log(request_data);
       // 参数处理
       if (JSON.stringify(this.data) !== "{}") {
         request_data.data = {
