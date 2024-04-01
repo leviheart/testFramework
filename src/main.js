@@ -27,7 +27,9 @@ import "lib-flexible"; // 移动端适配 (目录: hello-world/src/main.js)
 import VueAMap from "vue-amap";
 import * as echarts from "echarts";
 import Bus from "@/assets/bus.js";
+import VueCesium from 'vue-cesium'
 
+Vue.use(VueCesium)
 // import GlobalRouteHooks from './plugins/global-route-hooks';
 Vue.prototype.$echarts = echarts;
 

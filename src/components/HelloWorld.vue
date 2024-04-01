@@ -42,6 +42,7 @@ export default {
         arr[j] = false;
       }
       this.$set(arr, i, true);
+      // arr[i] = true;
       console.log(arr);
     },
   },

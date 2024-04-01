@@ -10,8 +10,15 @@
       <el-menu-item index="/maps/page6">Page 6</el-menu-item>
       <el-menu-item index="/maps/page7">Page 7</el-menu-item>
       <el-menu-item index="/scroll">scroll</el-menu-item>
+      <el-menu-item index="/AmapProject">AmapProject</el-menu-item>
+      <el-menu-item index="/componentInput">componentInput</el-menu-item>
+      <el-menu-item index="/DeepCopy">DeepCopy</el-menu-item>
+      <el-menu-item index="/descriptions">descriptions</el-menu-item>
+      <el-menu-item index="/HelloWorld">HelloWorld</el-menu-item>
+      <el-menu-item index="/Label">Label</el-menu-item>
+      <el-menu-item index="/PropsCom">PropsCom</el-menu-item>
+      <el-menu-item index="/searchBar">searchBar</el-menu-item>
     </el-menu>
-
     <keep-alive>
       <router-view />
     </keep-alive>

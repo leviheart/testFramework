@@ -51,5 +51,45 @@ export default new Router({
       component: () => import("@/views/scroll.vue"),
       name: "scroll",
     },
+    {
+      path: "/AmapProject",
+      component: () => import("@/components/AmapProject.vue"),
+      name: "AmapProject",
+    },
+    {
+      path: "/componentInput",
+      component: () => import("@/components/componentInput.vue"),
+      name: "componentInput",
+    },
+    {
+      path: "/DeepCopy",
+      component: () => import("@/components/DeepCopy.vue"),
+      name: "DeepCopy",
+    },
+    {
+      path: "/descriptions",
+      component: () => import("@/components/descriptions.vue"),
+      name: "descriptions",
+    },
+    {
+      path: "/HelloWorld",
+      component: () => import("@/components/HelloWorld.vue"),
+      name: "HelloWorld",
+    },
+    {
+      path: "/Label",
+      component: () => import("@/components/Label.vue"),
+      name: "Label",
+    },
+    {
+      path: "/PropsCom",
+      component: () => import("@/components/PropsCom.vue"),
+      name: "PropsCom",
+    },
+    {
+      path: "/searchBar",
+      component: () => import("@/components/searchBar.vue"),
+      name: "searchBar",
+    },
   ],
 });
