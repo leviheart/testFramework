@@ -25,6 +25,7 @@ module.exports = {
         vue: "vue/dist/vue.js",
         "@": path.resolve(__dirname, "./src"),
         "@c": path.resolve(__dirname, "./src/components"),
+        "@a": path.resolve(__dirname, "./src/assets"),
       },
     };
 
@@ -86,13 +87,13 @@ module.exports = {
     config.plugins.delete("prefetch");
     config.plugins.delete("preload");
 
-    config.module
-      .rule("images")
-      .use("image-webpack-loader")
-      .loader("image-webpack-loader")
-      .options({
-        bypassOnDebug: true,
-      });
+    // config.module
+    //   .rule("images")
+    //   .use("image-webpack-loader")
+    //   .loader("image-webpack-loader")
+    //   .options({
+    //     bypassOnDebug: true,
+    //   });
     // 需要先运行 `npm install --save-dev image-webpack-loader` 安装 image-webpack-loader
 
     config.devServer.disableHostCheck(process.env.NODE_ENV === "development");

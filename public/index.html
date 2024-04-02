@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <!-- 在 head 标签内引入 Cesium 的 CSS 样式 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/cesium/Build/Cesium/Widgets/widgets.css"
+    />
     <title>work_vue</title>
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but work_vue doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong
+        >We're sorry but work_vue doesn't work properly without JavaScript
+        enabled. Please enable it to continue.</strong
+      >
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <!-- 在 head 或 body 标签内 -->
+    <script src="https://unpkg.com/cesium/Build/Cesium/Cesium.js"></script>
+    <!-- 如果需要使用 Ion 数据源，请确保还设置了默认访问令牌 -->
+    <script>
+      Cesium.Ion.defaultAccessToken =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5MzNmNTNkMy04ZGQwLTRkNTgtODUyOS1jNDJmMzRlN2NlNzIiLCJpZCI6MTczNjg3LCJpYXQiOjE2OTgxOTc4MTB9.YCBUN_GW2f7HnXGz5AKnE8Uexh3fnD5eloEpCNi2pdc";
+    </script>
   </body>
 </html>
