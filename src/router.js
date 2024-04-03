@@ -82,14 +82,14 @@ export default new Router({
       name: "Label",
     },
     {
-      path: "/PropsCom",
-      component: () => import("@/components/PropsCom.vue"),
-      name: "PropsCom",
+      path: "/Three",
+      component: () => import("@/components/Three.vue"),
+      name: "Three",
     },
     {
-      path: "/searchBar",
-      component: () => import("@/components/searchBar.vue"),
-      name: "searchBar",
+      path: "/VtkState",
+      component: () => import("@/components/VtkState.vue"),
+      name: "VtkState",
     },
   ],
 });

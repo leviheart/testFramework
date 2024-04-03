@@ -16,8 +16,8 @@
       <el-menu-item index="/descriptions">descriptions</el-menu-item>
       <el-menu-item index="/HelloWorld">HelloWorld</el-menu-item>
       <el-menu-item index="/Label">Label</el-menu-item>
-      <el-menu-item index="/PropsCom">PropsCom</el-menu-item>
-      <el-menu-item index="/searchBar">searchBar</el-menu-item>
+      <el-menu-item index="/Three">Three</el-menu-item>
+      <el-menu-item index="/VtkState">VtkState</el-menu-item>
     </el-menu>
     <keep-alive>
       <router-view />
