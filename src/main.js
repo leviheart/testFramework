@@ -27,9 +27,8 @@ import "lib-flexible"; // 移动端适配 (目录: hello-world/src/main.js)
 import VueAMap from "vue-amap";
 import * as echarts from "echarts";
 import Bus from "@/assets/bus.js";
-import VueCesium from 'vue-cesium'
+import VueCesium from "vue-cesium";
 
-Vue.use(VueCesium)
 // import GlobalRouteHooks from './plugins/global-route-hooks';
 Vue.prototype.$echarts = echarts;
 
@@ -81,7 +80,10 @@ if (process.env.NODE_ENV === "production") {
   axios.defaults.baseURL = "http://localhost:80";
   console.log(axios.defaults.baseURL, "axios.defaults.baseURL");
 }
-
+Vue.use(VueCesium, {
+  cesiumPath: "https://unpkg.com/cesium@1.100/Build/Cesium/Cesium.js",
+  accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5MzNmNTNkMy04ZGQwLTRkNTgtODUyOS1jNDJmMzRlN2NlNzIiLCJpZCI6MTczNjg3LCJpYXQiOjE2OTgxOTc4MTB9.YCBUN_GW2f7HnXGz5AKnE8Uexh3fnD5eloEpCNi2pdc'
+});
 new Vue({
   router,
   store,
