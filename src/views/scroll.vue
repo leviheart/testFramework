@@ -15,6 +15,7 @@
       :iconClass="dropdownOpen ? 'email' : 'phone'"
       @click="toggleDropdown"
     ></svg-icon>
+    <div class="testStyle"></div>
   </div>
 </template>
 <style>
@@ -31,6 +32,7 @@
 }
 </style>
 <script>
+import "@s/testStyle2.scss"
 export default {
   data() {
     return {

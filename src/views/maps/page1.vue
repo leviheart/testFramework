@@ -6,11 +6,13 @@
       <div id="bar"></div>
       <div id="line"></div>
     </el-dialog>
+    <div class="testStyle"></div>
   </div>
 </template>
 
 <script>
 import charDialog from "../components/dialog.vue";
+import "../../styles/testStyle.scss"
 export default {
   data() {
     return {
@@ -228,4 +230,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+// @import "@s/testStyle.scss"
+</style>

@@ -107,6 +107,52 @@ export default {
           ]);
         }
       });
+      //marker功能测试
+      this.testMarker(map);
+    },
+    testMarker(map) {
+      const markerData = [
+        { lngLat: [118.79, 32.06], index: 0 },
+        { lngLat: [119.79, 31.06], index: 1 },
+        { lngLat: [121.79, 35.06], index: 2 },
+        // ...其他marker数据
+      ];
+      map.addSource("markers", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: markerData.map((marker, index) => ({
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: marker.lngLat,
+            },
+            properties: {
+              index: marker.index, // 保留索引数据
+            },
+          })),
+        },
+      });
+      const imageUrl = require("../../assets/image/blueCamera.png");
+      map.loadImage(imageUrl, function(error, image) {
+        if (error) throw error;
+        console.log("加入图片");
+        map.addImage("marker-icon", image);
+        // 继续其他操作...
+        map.addLayer({
+          id: "markers",
+          type: "symbol",
+          source: "markers",
+          layout: {
+            "icon-image": "marker-icon", // 使用默认marker图标
+            "icon-allow-overlap": true, // 允许重叠
+            "icon-ignore-placement": true, // 忽略与标注文字的空间规则
+            "text-field": ["get", "index"], // 从marker属性获取索引作为标注
+            "text-offset": [0, 1.1],
+            "text-anchor": "top",
+          },
+        });
+      });
     },
   },
 };
