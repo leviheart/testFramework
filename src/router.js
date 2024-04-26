@@ -91,5 +91,10 @@ export default new Router({
       component: () => import("@/components/VtkState.vue"),
       name: "VtkState",
     },
+    {
+      path: "/mySharderCom",
+      component: () => import("@/components/mySharderCom.vue"),
+      name: "mySharderCom",
+    },
   ],
 });
