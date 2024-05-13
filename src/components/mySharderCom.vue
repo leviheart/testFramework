@@ -3,6 +3,7 @@
 </template>
 
 <script>
+// 定义顶点着色器程序
 const vert = `
   attribute vec4 a_position;
   void main () {
@@ -10,6 +11,7 @@ const vert = `
   }
 `;
 
+// 定义片段着色器程序的前缀，包含一些全局变量声明
 const fragPrefix = `
   precision mediump float;
 
@@ -17,11 +19,14 @@ const fragPrefix = `
   uniform vec2 iResolution;
 `;
 
+// 定义片段着色器程序的尾部，主要是主函数
 const fragTail = `
   void main () {
     gl_FragColor = mainImage(gl_FragCoord.xy);
   }
 `;
+
+// 将片段着色器程序的前缀、主体和尾部拼接起来
 const frag =
   fragPrefix +
   `#define NUM_LAYERS 5.
@@ -92,9 +97,11 @@ vec3 Layer(vec2 uv) {
   fragTail;
 
 /**
- * @param gl {WebGLRenderingContext}
- * @param vert {string}
- * @param frag {string}
+ * 初始化WebGL着色器程序
+ * @param gl {WebGLRenderingContext} WebGL渲染上下文
+ * @param vert {string} 顶点着色器程序代码
+ * @param frag {string} 片段着色器程序代码
+ * @returns {WebGLProgram|null} 编译链接成功的着色器程序，失败则返回null
  */
 function initWebGL(gl, vert, frag) {
   const vertShader = gl.createShader(gl.VERTEX_SHADER);
@@ -107,7 +114,7 @@ function initWebGL(gl, vert, frag) {
   if (!sucecess) {
     console.error(gl.getShaderInfoLog(vertShader));
     gl.deleteShader(vertShader);
-    return;
+    return null;
   }
 
   gl.compileShader(fragShader);
@@ -115,7 +122,7 @@ function initWebGL(gl, vert, frag) {
   if (!sucecess) {
     console.error(gl.getShaderInfoLog(fragShader));
     gl.deleteShader(fragShader);
-    return;
+    return null;
   }
 
   const program = gl.createProgram();
@@ -126,7 +133,7 @@ function initWebGL(gl, vert, frag) {
   if (!sucecess) {
     console.error(gl.getProgramInfoLog(program));
     gl.deleteProgram(program);
-    return;
+    return null;
   }
   return program;
 }
@@ -142,9 +149,11 @@ export default {
 
     const program = initWebGL(gl, vert, frag);
 
+    // 初始化WebGL环境，设置清空颜色等
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
 
+    // 创建并初始化顶点缓冲对象和索引缓冲对象
     const buffer = gl.createBuffer();
     const indicesBuffer = gl.createBuffer();
     const vertices = new Float32Array([
@@ -166,6 +175,7 @@ export default {
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
     gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
 
+    // 使用着色器程序，设置属性和统一变量
     gl.useProgram(program);
     const a_position = gl.getAttribLocation(program, "a_position");
     gl.vertexAttribPointer(
@@ -181,7 +191,9 @@ export default {
     const iTime = gl.getUniformLocation(program, "iTime");
     const iResolution = gl.getUniformLocation(program, "iResolution");
 
+    // 初始化时间变量，用于动画循环
     let time = 0;
+    // 主循环，每帧更新时间并渲染
     const mainLoop = () => {
       time++;
 

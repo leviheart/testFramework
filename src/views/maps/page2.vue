@@ -160,7 +160,7 @@ export default {
 <style scoped>
 #map2 {
   position: absolute;
-  top: 0;
+  top: 200px;
   bottom: 0;
   width: 100%;
 }
