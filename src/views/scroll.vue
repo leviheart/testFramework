@@ -83,6 +83,7 @@ export default {
       return result;
     }, []);
     this.displayedGroups = this.groupedItems.slice(0, 1); // 默认只显示第一行分组
+    //添加动画
   },
 };
 </script>
