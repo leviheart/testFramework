@@ -9,6 +9,39 @@
       <div id="test"></div>
       <div id="bar"></div>
       <div id="line"></div>
+      <el-table :data="tableData" style="width: 100%">
+        <el-table-column prop="key1" label="Key 1" width="180">
+        </el-table-column>
+        <el-table-column prop="value1" label="Value 1" width="180">
+        </el-table-column>
+        <el-table-column prop="key2" label="Key 2" width="180">
+        </el-table-column>
+        <el-table-column prop="value2" label="Value 2" width="180">
+        </el-table-column>
+      </el-table>
+
+      <div class="details-container">
+        <div v-for="(item, index) in items" :key="index" class="detail-row">
+          <div class="key">{{ item.key }}</div>
+          <div class="value">{{ item.value }}</div>
+        </div>
+      </div>
+
+      <el-dialog :title="''" :visible.sync="dialogVisible" width="1400px">
+        <div>
+          <el-row
+            v-for="(item, index) in items"
+            :key="index"
+          >
+            <el-col :span="12">
+              <div class="key-column">{{ item.key }}</div>
+            </el-col>
+            <el-col :span="12">
+              <div class="value-column">{{ item.value }}</div>
+            </el-col>
+          </el-row>
+        </div>
+      </el-dialog>
     </el-dialog>
     <!-- <div class="testStyle"></div> -->
   </div>
@@ -26,6 +59,24 @@ export default {
       showEcharts1: true, // 控制第一个图表的显示
       showEcharts2: true, // 控制第二个图表的显示
       showEcharts3: true, // 控制第三个图表的显示
+      items: [
+        { key: "Name", value: "John Doe" },
+        { key: "Age", value: "30" },
+        { key: "Email", value: "john.doe@example.com" },
+        { key: "Address", value: "123 Main St." },
+      ],
+      dialogVisible: false,
+      input1: "",
+      input2: "",
+      input3: "",
+      select1: "",
+      select2: "",
+      options: [
+        { value: "option1", label: "Option 1" },
+        { value: "option2", label: "Option 2" },
+        { value: "option3", label: "Option 3" },
+        // 更多选项...
+      ],
     };
   },
   components: {
@@ -245,4 +296,39 @@ export default {
 
 <style lang="scss" scoped>
 // @import "@s/testStyle.scss"
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.key {
+  width: 45%;
+  font-weight: bold;
+}
+.value {
+  width: 50%;
+}
+.key-column {
+  background-color: #ccc;
+  padding: 10px;
+  border: 1px solid #e778e3;
+}
+
+.value-column {
+  padding: 10px;
+  border: 1px solid #e778e3;
+}
+
+/* 添加鼠标悬停效果 */
+.highlighted-row .key-column,
+.highlighted-row .value-column {
+  border-color: blue;
+}
 </style>

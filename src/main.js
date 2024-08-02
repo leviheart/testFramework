@@ -28,7 +28,6 @@ import VueAMap from "vue-amap";
 import * as echarts from "echarts";
 import Bus from "@/assets/bus.js";
 import VueCesium from "vue-cesium";
-
 // import GlobalRouteHooks from './plugins/global-route-hooks';
 Vue.prototype.$echarts = echarts;
 
@@ -82,7 +81,8 @@ if (process.env.NODE_ENV === "production") {
 }
 Vue.use(VueCesium, {
   cesiumPath: "https://unpkg.com/cesium@1.100/Build/Cesium/Cesium.js",
-  accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5MzNmNTNkMy04ZGQwLTRkNTgtODUyOS1jNDJmMzRlN2NlNzIiLCJpZCI6MTczNjg3LCJpYXQiOjE2OTgxOTc4MTB9.YCBUN_GW2f7HnXGz5AKnE8Uexh3fnD5eloEpCNi2pdc'
+  accessToken:
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5MzNmNTNkMy04ZGQwLTRkNTgtODUyOS1jNDJmMzRlN2NlNzIiLCJpZCI6MTczNjg3LCJpYXQiOjE2OTgxOTc4MTB9.YCBUN_GW2f7HnXGz5AKnE8Uexh3fnD5eloEpCNi2pdc",
 });
 new Vue({
   router,

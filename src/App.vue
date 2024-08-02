@@ -10,6 +10,7 @@
       <el-menu-item index="/maps/page6">Page 6</el-menu-item>
       <el-menu-item index="/maps/page7">Page 7</el-menu-item>
       <el-menu-item index="/maps/page8">Page 8</el-menu-item>
+      <el-menu-item index="/maps/page9">Page 9</el-menu-item>
       <el-menu-item index="/scroll">scroll</el-menu-item>
       <el-menu-item index="/AmapProject">AmapProject</el-menu-item>
       <el-menu-item index="/componentInput">componentInput</el-menu-item>
@@ -26,5 +27,14 @@
     </keep-alive>
   </div>
 </template>
-
+<script>
+export default {
+  data() {
+    return {};
+  },
+  mounted() {
+  },
+  methods: {},
+};
+</script>
 <style lang="scss"></style>
