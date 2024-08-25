@@ -5,6 +5,9 @@
     <svg-icon className="svg-icon-18" iconClass="email"></svg-icon>
     <svg-icon className="svg-icon-18" iconClass="phone"></svg-icon>
     <svg-icon className="svg-icon-18" iconClass="sousuo1"></svg-icon>
+    <svg class="icon" aria-hidden="true">
+      <use xlink:href="#icon-hangzhengguihua"></use>
+    </svg>
     <!-- <img :src="eye" alt="SVG Icon" /> -->
     <!-- ymx问题测试 -->
     <div style="display: inline-block">
@@ -217,7 +220,6 @@ export default {
     );
 
     this.PromiseTest();
-
   },
   methods: {
     open() {
@@ -315,5 +317,12 @@ svg {
 
 .test {
   font-size: 44px;
+}
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
 }
 </style>

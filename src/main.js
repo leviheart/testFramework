@@ -28,6 +28,8 @@ import VueAMap from "vue-amap";
 import * as echarts from "echarts";
 import Bus from "@/assets/bus.js";
 import VueCesium from "vue-cesium";
+import "../public/font_jx/iconfont.js"
+import "../public/font_jx/iconfont.css"
 // import GlobalRouteHooks from './plugins/global-route-hooks';
 Vue.prototype.$echarts = echarts;
 

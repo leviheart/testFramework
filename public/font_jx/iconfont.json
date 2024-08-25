@@ -1,0 +1,310 @@
+{
+  "id": "4649050",
+  "name": "电网一张图",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "41401778",
+      "name": "飞线总览",
+      "font_class": "feixianzonglan",
+      "unicode": "e647",
+      "unicode_decimal": 58951
+    },
+    {
+      "icon_id": "41401777",
+      "name": "供电服务",
+      "font_class": "gongdianfuwu",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "41401767",
+      "name": "充电桩监测",
+      "font_class": "chongdianzhuangjiance",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "41401774",
+      "name": "供电可靠率",
+      "font_class": "gongdiankekaoshuai",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
+      "icon_id": "41401782",
+      "name": "覆冰预警",
+      "font_class": "fubingyujing",
+      "unicode": "e64a",
+      "unicode_decimal": 58954
+    },
+    {
+      "icon_id": "41401770",
+      "name": "电压合格率",
+      "font_class": "dianyahegeshuai",
+      "unicode": "e64b",
+      "unicode_decimal": 58955
+    },
+    {
+      "icon_id": "41401780",
+      "name": "设计态",
+      "font_class": "shejitai",
+      "unicode": "e64c",
+      "unicode_decimal": 58956
+    },
+    {
+      "icon_id": "41401769",
+      "name": "变电站气象分析",
+      "font_class": "biandianzhanqixiangfenxi",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    },
+    {
+      "icon_id": "41401773",
+      "name": "超长线路",
+      "font_class": "chaochangxianlu",
+      "unicode": "e64e",
+      "unicode_decimal": 58958
+    },
+    {
+      "icon_id": "41401768",
+      "name": "标准化接线率",
+      "font_class": "biaozhunhuajiexianshuai",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "41401771",
+      "name": "大分支比例",
+      "font_class": "dafenzhibili",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "41401772",
+      "name": "大风预警",
+      "font_class": "dafengyujing",
+      "unicode": "e651",
+      "unicode_decimal": 58961
+    },
+    {
+      "icon_id": "41401766",
+      "name": "N-1通过率",
+      "font_class": "N-1tongguoshuai",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    },
+    {
+      "icon_id": "41401765",
+      "name": "95598工单",
+      "font_class": "a-95598gongdan",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    },
+    {
+      "icon_id": "41401793",
+      "name": "停电范围",
+      "font_class": "tingdianfanwei",
+      "unicode": "e634",
+      "unicode_decimal": 58932
+    },
+    {
+      "icon_id": "41401805",
+      "name": "站间联络率",
+      "font_class": "zhanjianlianluoshuai",
+      "unicode": "e635",
+      "unicode_decimal": 58933
+    },
+    {
+      "icon_id": "41401784",
+      "name": "气象中心",
+      "font_class": "qixiangzhongxin",
+      "unicode": "e636",
+      "unicode_decimal": 58934
+    },
+    {
+      "icon_id": "41401798",
+      "name": "新型储能",
+      "font_class": "xinxingchuneng",
+      "unicode": "e637",
+      "unicode_decimal": 58935
+    },
+    {
+      "icon_id": "41401802",
+      "name": "坐标转换",
+      "font_class": "zuobiaozhuanhuan",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "41401775",
+      "name": "高温预警",
+      "font_class": "gaowenyujing",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "41401795",
+      "name": "行政规划",
+      "font_class": "hangzhengguihua",
+      "unicode": "e63a",
+      "unicode_decimal": 58938
+    },
+    {
+      "icon_id": "41401797",
+      "name": "线路联络率",
+      "font_class": "xianlulianluoshuai",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "41401800",
+      "name": "主变重过载",
+      "font_class": "zhubianzhongguozai",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "41401794",
+      "name": "县域风险评估",
+      "font_class": "xianyufengxianpinggu",
+      "unicode": "e63d",
+      "unicode_decimal": 58941
+    },
+    {
+      "icon_id": "41401786",
+      "name": "计量可视化",
+      "font_class": "jiliangkeshihua",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "41401788",
+      "name": "配电视频总览",
+      "font_class": "peidianshipinzonglan",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "41401791",
+      "name": "台风预警",
+      "font_class": "taifengyujing",
+      "unicode": "e640",
+      "unicode_decimal": 58944
+    },
+    {
+      "icon_id": "41401779",
+      "name": "拓扑异常工单",
+      "font_class": "tuopuyichanggongdan",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "41401785",
+      "name": "山火预警",
+      "font_class": "shanhuoyujing",
+      "unicode": "e642",
+      "unicode_decimal": 58946
+    },
+    {
+      "icon_id": "41401787",
+      "name": "挂接配变过多",
+      "font_class": "guajiepeibianguoduo",
+      "unicode": "e643",
+      "unicode_decimal": 58947
+    },
+    {
+      "icon_id": "41401783",
+      "name": "可开放容量",
+      "font_class": "kekaifangrongliang",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "41401776",
+      "name": "落雷预警",
+      "font_class": "laleiyujing",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "41401790",
+      "name": "建设态",
+      "font_class": "jianshetai",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "41401811",
+      "name": "用户行为审计",
+      "font_class": "yonghuhangweishenji",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "41401810",
+      "name": "行政区域规划",
+      "font_class": "hangzhengquyuguihua",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "41401809",
+      "name": "老旧设备统计",
+      "font_class": "laojiushebeitongji",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "41401808",
+      "name": "主网潮流图",
+      "font_class": "zhuwangchaoliutu",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "41401807",
+      "name": "无人机",
+      "font_class": "wurenji",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "41401781",
+      "name": "光伏监测",
+      "font_class": "guangfujiance",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "41401804",
+      "name": "台区异常线损",
+      "font_class": "taiquyichangxiansun",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "41401806",
+      "name": "运行异常监测",
+      "font_class": "yunhangyichangjiance",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "41401792",
+      "name": "输电视频总览",
+      "font_class": "shudianshipinzonglan",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    },
+    {
+      "icon_id": "41401803",
+      "name": "配网推演",
+      "font_class": "peiwangtuiyan",
+      "unicode": "e633",
+      "unicode_decimal": 58931
+    }
+  ]
+}
