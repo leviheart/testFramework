@@ -30,18 +30,120 @@ export default {
       "load",
       function() {
         this.loadGeojsonData(geoData, map);
-        this.reverseGeocode([118.791036, 32.065599], mapboxgl.accessToken);
+        // this.reverseGeocode([118.791036, 32.065599], mapboxgl.accessToken);
       }.bind(this)
     );
   },
   methods: {
     loadGeojsonData(geojsonData, map) {
+      const geodata = {
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            id: "1",
+            properties: {
+              //图层颜色
+              color: "#8888ff",
+              //图层透明度
+              opacity: 0.5,
+              //图层填充颜色
+              fillColor: "#0000ff",
+              //图层填充透明度
+              fillOpacity: 0.5,
+              //图层边框颜色
+              strokeColor: "#8888ff",
+              //图层边框宽度
+              strokeWidth: 1,
+              originColor: "#0000ff",
+            },
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [139.5, 41.0],
+                  [140.4, 42.0],
+                  [143.4, 53.1],
+                  [144.5, 64.1],
+                  [159.5, 75.0],
+                ],
+              ],
+            },
+          },
+          {
+            type: "Feature",
+            id: "2",
+            properties: {
+              //图层颜色
+              color: "#0088ff",
+              //图层透明度
+              opacity: 0.5,
+              //图层填充颜色
+              fillColor: "#00ff00",
+              //图层填充透明度
+              fillOpacity: 0.5,
+              //图层边框颜色
+              strokeColor: "#8888ff",
+              //图层边框宽度
+              strokeWidth: 1,
+              originColor: "#00ff00",
+            },
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [100, 40.0],
+                  [113.5, 55.0],
+                  [114.5, 67.1],
+                  [117.6, 75.1],
+                  [120.6, 80.0],
+                ],
+              ],
+            },
+          },
+          {
+            type: "Feature",
+            id: "3",
+            properties: {
+              //图层颜色
+              color: "#ff68ff",
+              //图层透明度
+              opacity: 0.5,
+              //图层填充颜色
+              fillColor: "#ff0000",
+              //图层填充透明度
+              fillOpacity: 0.5,
+              //图层边框颜色
+              strokeColor: "#8888ff",
+              //图层边框宽度
+              strokeWidth: 1,
+              originColor: "#ff0000",
+            },
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [81.7, 41.0],
+                  [84.6, 44.0],
+                  [90.6, 49.1],
+                  [93.7, 53.1],
+                  [98.7, 60.0],
+                ],
+              ],
+            },
+          },
+        ],
+      };
+      geojsonData = geodata;
       // 将GeoJSON数据添加到地图
       if (map && geojsonData) {
+        console.log("进入面图层");
+
         map.addSource("jiangsu", {
           type: "geojson",
           data: geojsonData,
         });
+        console.log(geojsonData);
 
         // 在地图上绘制多边形
         map.addLayer({
@@ -50,9 +152,34 @@ export default {
           source: "jiangsu", // 使用之前定义的source
           layout: {},
           paint: {
-            "fill-color": "#8888ff", // 多边形填充颜色
-            "fill-opacity": 0.5, // 多边形透明度
+            "fill-color": ["get", "fillColor"],
+            "fill-opacity": 0.5,
           },
+        });
+        // 监听点击事件
+        map.on("click", "jiangsu-polygon", function(e) {
+          // 获取被点击的特征
+          var feature = e.features[0];
+          console.log(feature, "feature");
+
+          if (!feature) return;
+
+          var newColor = "#000000";
+          console.log(map.getSource("jiangsu")._data, "map.getSource");
+          console.log(map.querySourceFeatures("jiangsu"), "map.getSource");
+
+          // 更新特征的 fillcolor 属性
+          // 更新特征的属性
+          map.getSource("jiangsu").setData({
+            type: "FeatureCollection",
+            features: map.getSource("jiangsu")._data.features.map((f) => {
+              f.properties.fillColor = f.properties.originColor;
+              if (f.id == feature.id) {
+                f.properties.fillColor = newColor;
+              }
+              return f;
+            }),
+          });
         });
       } else {
         console.error("Map or GeoJSON data is not available.");

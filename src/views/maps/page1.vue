@@ -4,12 +4,12 @@
     <!-- 使用Element UI的按钮，类型为"primary"，点击触发openDialog方法 -->
     <el-button type="primary" @click="openDialog">打开弹框</el-button>
     <!-- 弹出框组件，标题为"提示"，宽度占90%，可见性受dialogVisible控制 -->
-    <el-dialog title="提示" :visible.sync="dialogVisible" width="90%">
+    <el-dialog title="提示" :append-to-body="true" :visible.sync="dialogVisible1" width="90%">
       <!-- 用于显示ECharts图表的div -->
       <div id="test"></div>
       <div id="bar"></div>
       <div id="line"></div>
-      <el-table :data="tableData" style="width: 100%">
+      <el-table :data="tableData" style="width: 100%" empty-text="暂无数据">
         <el-table-column prop="key1" label="Key 1" width="180">
         </el-table-column>
         <el-table-column prop="value1" label="Value 1" width="180">
@@ -26,8 +26,9 @@
           <div class="value">{{ item.value }}</div>
         </div>
       </div>
+    </el-dialog>
 
-      <el-dialog :title="''" :visible.sync="dialogVisible" width="1400px">
+    <el-dialog :title="''" :append-to-body="true" :visible.sync="dialogVisible2" width="1400px">
         <div>
           <el-row
             v-for="(item, index) in items"
@@ -42,7 +43,6 @@
           </el-row>
         </div>
       </el-dialog>
-    </el-dialog>
     <!-- <div class="testStyle"></div> -->
   </div>
 </template>
@@ -55,7 +55,7 @@ export default {
   data() {
     // 定义组件的数据属性
     return {
-      dialogVisible: false, // 控制弹框是否显示
+      dialogVisible1: false, // 控制弹框是否显示
       showEcharts1: true, // 控制第一个图表的显示
       showEcharts2: true, // 控制第二个图表的显示
       showEcharts3: true, // 控制第三个图表的显示
@@ -65,7 +65,7 @@ export default {
         { key: "Email", value: "john.doe@example.com" },
         { key: "Address", value: "123 Main St." },
       ],
-      dialogVisible: false,
+      dialogVisible2: false,
       input1: "",
       input2: "",
       input3: "",
@@ -76,6 +76,11 @@ export default {
         { value: "option2", label: "Option 2" },
         { value: "option3", label: "Option 3" },
         // 更多选项...
+      ],
+      tableData: [
+        // { key1: "Key 1", value1: "Value 1", key2: "Key 2", value2: "Value 2" },
+        // { key1: "Key 3", value1: "Value 3", key2: "Key 4", value2: "Value 4" },
+        // 更多数据...
       ],
     };
   },
@@ -92,7 +97,8 @@ export default {
   methods: {
     // 打开弹框并初始化图表
     openDialog() {
-      this.dialogVisible = true; // 打开弹框
+      this.dialogVisible1 = true; // 打开弹框
+      this.dialogVisible2 = true; // 打开弹框
       this.showEcharts1 = false; // 隐藏第一个图表
       this.showEcharts2 = true; // 显示第二个图表
       this.showEcharts3 = false; // 隐藏第三个图表
