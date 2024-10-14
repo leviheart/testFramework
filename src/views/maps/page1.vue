@@ -1,5 +1,5 @@
 <template>
-  <!-- 主要内容包裹div -->
+  <!-- 主要内容包裹 -->
   <div>
     <!-- 使用Element UI的按钮，类型为"primary"，点击触发openDialog方法 -->
     <el-button type="primary" @click="openDialog">打开弹框</el-button>
