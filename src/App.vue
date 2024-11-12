@@ -23,6 +23,7 @@
       <el-menu-item index="/Three">Three</el-menu-item>
       <el-menu-item index="/VtkState">VtkState</el-menu-item>
       <el-menu-item index="/mySharderCom">mySharderCom</el-menu-item>
+      <el-menu-item index="/collapse">collapse</el-menu-item>
     </el-menu>
     <keep-alive>
       <router-view />

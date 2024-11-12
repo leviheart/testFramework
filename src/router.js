@@ -116,5 +116,10 @@ export default new Router({
       component: () => import("@/components/mySharderCom.vue"),
       name: "mySharderCom",
     },
+    {
+      path: "/collapse",
+      component: () => import("@/components/collapse.vue"),
+      name: "collapse",
+    },
   ],
 });
