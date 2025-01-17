@@ -23,7 +23,7 @@
 		},
 		mounted() {
 			this.b = this.a
-			this.a = [] //这个操作，表示a指向空的内存空间,会直接切断a与b之间的联系
+			this.a = [] //这个操作，表示a指向空的内存空间,会直接切断a与b之间的联系1
 		},
 		methods: {
 			deep() {
