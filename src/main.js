@@ -68,6 +68,7 @@ VueAMap.initAMapApiLoader({
     "AMap.Scale",
     "AMap.OverView",
     "AMap.ToolBar",
+    "AMap.MouseTool",
     "AMap.MapType",
     "AMap.PolyEditor",
     "AMap.CircleEditor",

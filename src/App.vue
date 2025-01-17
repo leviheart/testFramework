@@ -13,6 +13,7 @@
       <el-menu-item index="/maps/page9">Page 9</el-menu-item>
       <el-menu-item index="/maps/page10">Page 10</el-menu-item>
       <el-menu-item index="/maps/page11">Page 11</el-menu-item>
+      <el-menu-item index="/maps/page12">Page 12</el-menu-item>
       <el-menu-item index="/scroll">scroll</el-menu-item>
       <el-menu-item index="/AmapProject">AmapProject</el-menu-item>
       <el-menu-item index="/componentInput">componentInput</el-menu-item>

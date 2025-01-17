@@ -67,6 +67,11 @@ export default new Router({
       name: "page11",
     },
     {
+      path: "/maps/page12",
+      component: () => import("@/views/maps/page12.vue"),
+      name: "page12",
+    },
+    {
       path: "/scroll",
       component: () => import("@/views/scroll.vue"),
       name: "scroll",
