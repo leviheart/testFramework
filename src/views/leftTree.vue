@@ -86,6 +86,41 @@
       测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
       测试测试测试测试测试测试测试测试测试测试测试测试
     </div>
+    <div>
+      <el-input></el-input>
+      <div class="squre">
+        敏感用户
+      </div>
+      <el-tag
+        size="mini"
+        :style="{
+          background: '#9B3311',
+          color: '#FF973F',
+          borderColor: '#FF973F',
+        }"
+        class="custom-tag"
+        >敏感用户</el-tag
+      >
+    </div>
+    <div class="nameTitle">
+      <span class="name">
+        <el-tooltip
+          effect="dark"
+          :content="longText"
+          placement="top"
+          popper-class="custom-tooltip"
+        >
+          <div class="name-div">{{ longText }}</div>
+        </el-tooltip>
+      </span>
+    </div>
+    <div class="echartsBox">
+      <div id="main"></div>
+    </div>
+    <div @click.stop="click1">
+      <div @click.stop="click2">上面文字</div>
+      <el-button @click="click3">下面按钮</el-button>
+    </div>
   </div>
 </template>
 
@@ -186,6 +221,8 @@ export default {
       params: {
         pageNum: 1,
       },
+      longText: "奥迪佛i哦i我去饿哦i我国iOS的接口",
+      types: ["馈线(回)"],
     };
   },
   mounted() {
@@ -220,8 +257,35 @@ export default {
     );
 
     this.PromiseTest();
+    console.log("-1".split("-")[1]);
+
+    //初始化柱状图
+    this.init();
   },
   methods: {
+    init() {
+      var chartDom = document.getElementById("main");
+      var myChart = this.$echarts.init(chartDom);
+      var option;
+
+      option = {
+        xAxis: {
+          type: "value",
+        },
+        yAxis: {
+          type: "category",
+          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        },
+        series: [
+          {
+            data: [120, 200, 150, 80, 70, 110, 130],
+            type: "bar",
+          },
+        ],
+      };
+
+      option && myChart.setOption(option);
+    },
     open() {
       this.dialog = true;
       this.$nextTick(() => {
@@ -292,6 +356,29 @@ export default {
       this.$set(this.params, "pageNum", 2);
       console.log("测试变量", this.params.pageNum, this.params);
     },
+    click1() {
+      const arr = [
+        { feederId: "1", name: "a" },
+        { feederId: "2", name: "b" },
+        { feederId: "1", name: "c" },
+        { feederId: "100", name: "c" },
+        { feederId: "1324", name: "c" },
+        { feederId: "1324", name: "c" },
+
+      ];
+
+      const uniqueArr = arr.filter(
+        (item, index, self) =>
+          index === self.findIndex((t) => t.feederId === item.feederId)
+      );
+      console.log("click1", uniqueArr);
+    },
+    click2() {
+      console.log("click2");
+    },
+    click3() {
+      console.log("click3");
+    },
   },
 };
 </script>
@@ -324,5 +411,62 @@ svg {
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
+}
+::v-deep .el-input__inner {
+  background: linear-gradient(180deg, #2b85d8 0%, #1a65ab 100%);
+  border: 4px solid #1860a7;
+}
+.squre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 100px;
+  background-color: #9b3311;
+  color: #ff973f;
+  border: 3px solid #ff973f;
+}
+.custom-tag {
+  font-size: 28px;
+  width: 200px !important; // 添加宽度
+  height: 50px !important;
+  display: flex; // 使用flex布局使文字居中
+  justify-content: center;
+  align-items: center;
+}
+.nameTitle {
+  width: 1200px;
+  .name {
+    font-size: 70px;
+    margin: 0 18px 20px 0;
+    color: #000;
+    .name-div {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      background: -webkit-gradient(
+        linear,
+        0 0,
+        100% 0,
+        from(#ff0000),
+        to(#00ff00)
+      );
+      color: transparent;
+      -webkit-background-clip: text;
+    }
+  }
+}
+</style>
+<style lang="scss">
+.custom-tooltip {
+  font-size: 48px !important;
+}
+.echartsBox {
+  width: 100%;
+  height: 220px;
+  #main {
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>

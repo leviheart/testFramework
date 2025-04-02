@@ -12,7 +12,7 @@ import mapboxgl from "mapbox-gl";
 // 设置 Mapbox access token
 mapboxgl.accessToken =
   // `pk.eyJ1IjoibHVrYXNtYXJ0aW5lbGxpIiwiYSI6ImNpem85dmhwazAyajIyd284dGxhN2VxYnYifQ.HQCmyhEXZUTz3S98FMrVAQ`
-  // "pk.eyJ1Ijoid2FuZ3Rvbmd4dWUiLCJhIjoiY2pzY3E2M2k0MDk3NzN5dDA0Nmtia2h0cCJ9.oP9fEJxOgVzm0dWGvL6tGg";
+  // "pk.eyJ1IjoidHd0aW1lcyIsImEiOiJjanl4c2tkdnYwenVuM210YXhjdGg3OTljIn0.4hACBWooh6zXxfUFoOo1jw";
   "pk.eyJ1IjoibHVrYXNtYXJ0aW5lbGxpIiwiYSI6ImNpem85dmhwazAyajIyd284dGxhN2VxYnYifQ.HQCmyhEXZUTz3S98FMrVAQ";
 var map;
 export default {

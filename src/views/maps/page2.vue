@@ -28,7 +28,7 @@ export default {
   },
   mounted() {
     // 设置Mapbox的访问令牌
-    mapboxgl.accessToken = `pk.eyJ1IjoibHVrYXNtYXJ0aW5lbGxpIiwiYSI6ImNpem85dmhwazAyajIyd284dGxhN2VxYnYifQ.HQCmyhEXZUTz3S98FMrVAQ`;
+    mapboxgl.accessToken = `pk.eyJ1IjoidHd0aW1lcyIsImEiOiJjanl4c2tkdnYwenVuM210YXhjdGg3OTljIn0.4hACBWooh6zXxfUFoOo1jw`;
     let that = this;
     // 初始化地图
     const map = new mapboxgl.Map({

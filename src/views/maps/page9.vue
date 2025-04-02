@@ -14,7 +14,7 @@ export default {
   },
   mounted() {
     // 初始化Mapbox地图
-    mapboxgl.accessToken = `pk.eyJ1IjoibHVrYXNtYXJ0aW5lbGxpIiwiYSI6ImNpem85dmhwazAyajIyd284dGxhN2VxYnYifQ.HQCmyhEXZUTz3S98FMrVAQ`;
+    mapboxgl.accessToken = `pk.eyJ1IjoidHd0aW1lcyIsImEiOiJjanl4c2tkdnYwenVuM210YXhjdGg3OTljIn0.4hACBWooh6zXxfUFoOo1jw`;
     const map = new mapboxgl.Map({
       container: "map", // 对应于模板中的<div id="map">的容器
       style: "mapbox://styles/mapbox/streets-v11", // 使用默认样式，也可以替换为自定义样式URL

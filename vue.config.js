@@ -106,7 +106,7 @@ module.exports = {
       postcss: {
         plugins: [
           require("postcss-plugin-px2rem")({
-            rootValue: 100, // 换算基数，默认100，这样的话把根标签的字体规定为1rem为100px
+            rootValue: 54, // 换算基数，默认100，这样的话把根标签的字体规定为1rem为100px //lib-flexibl设置的540px导致的
             exclude: /(node_module)/, // 排除node_modules目录下的文件
             mediaQuery: false, // 允许在媒体查询中转换px
             minPixelValue: 0, // 设置要替换的最小像素值
